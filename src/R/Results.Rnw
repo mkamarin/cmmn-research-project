@@ -1,0 +1,796 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\definecolor{darkBlue}{rgb}{0,0,0.2}
+\usepackage{xspace} % adds spaces to the end of commands if needed
+\usepackage[colorlinks,linkcolor={darkBlue},citecolor={darkBlue},urlcolor={darkBlue},bookmarks=true]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref} %% must be after hyperref
+
+% reportMean{mean}{sd}{<N>}
+\newcommand{\reportMeanFull}[3]{#1 (N #3, SD #2)\xspace}
+
+% reportMean{mean}{sd}
+\newcommand{\reportMeanTwo}[2]{#1 (SD #2)\xspace}
+
+% reportMeanUnits{units}{mean}{sd}{<N>}
+\newcommand{\reportMeanFullUnits}[4]{#2 #1 (N #4, SD #3)\xspace}
+
+% reportMeanUnits{units}{mean}{sd}
+\newcommand{\reportMeanTwoUnits}[3]{#2 #1 (SD #3)\xspace}
+
+\newcommand{\fileRef}[3]{#3 in file Basic-stats.pdf} %usage: fileRef{<FILE-name>}{<label>}{<ref text>}
+
+\begin{document}
+<<setup, include=FALSE, cache=FALSE, echo=FALSE>>=
+library(knitr)
+library(car)
+library(e1071)
+library(picante)
+library(xtable)
+options(xtable.floating = FALSE)
+options(xtable.timestamp = "")
+options(xtable.tabular.environment = "longtable")
+options(xtable.caption.placement = "top")
+options(xtable.floating=FALSE)
+options(xtable.booktabs=TRUE)
+#options(xtable.include.rownames = FALSE)
+options(xtable.sanitize.text.function=function(x){x})
+
+#library(moments)
+
+### Parameters coming from build.r (in turn they come from Build.[sh|bat]).
+### They can be used as a flag to know if we are executing inside RStudio 
+if(!exists("data.path"))  data.path <- "E:\\PhD\\UNISA\\Dissertation\\Data"
+if(!exists("generated.path")) generated.path <- "E:\\PhD\\UNISA\\Dissertation\\Generated"
+if(!exists("my.working.dir")) {my.working.dir <- "E:\\PhD\\UNISA\\Dissertation\\Scripts"
+ setwd(my.working.dir)
+}
+
+# set global chunk options
+opts_chunk$set(fig.path='figure/results-', fig.align='center', fig.show='hold', 
+               strip.white=TRUE, fig.width=4, fig.height=3, comment=NA, echo = FALSE)
+options(formatR.arrow=TRUE,width=90)
+
+data.set.name <- file.path(data.path,"dataset-clean.csv")
+source(file.path(my.working.dir,"share-read-dataset.r"))
+
+#data <- subset(data,notation.experience > 3)
+
+@
+
+
+<<my-code, echo=FALSE>>=
+source(file.path(my.working.dir,"share-my-functions.r"))
+
+A.cacy.SW <- shapiro.test(na.omit(data$A.Efficacy))
+A.ciency.SW <- shapiro.test(na.omit(data$A.Efficiency))
+@
+
+\ifdefined\chap
+\else
+  \title{CMMN Survey results}
+  \author{Mike A. Marin}
+  \maketitle
+  \tableofcontents
+  \newpage
+  
+  \section{Introduction}
+  This document describes the results for the CMMN complexity metrics survey.
+\fi
+
+%\section{Results of Statistical Tests}\label{sec:ExperimentResults}
+
+\subsection{Sample Size}\label{sec:sampleSize}
+As shown in \fileRef{FILESurveyStats}{fig:BasicStatsSample}{Figure 1}, out of the $333$ subjects that looked at the survey, only $258$ agreed to the informed consent form.
+Of those, only $106$ completed the survey. 
+Two completed surveys were empty with only the mandatory questions having been answered (informed consent, tutorial completion, and pairwise comparison). 
+However, there were four incomplete surveys that provided enough information to test more than one hypothesis. 
+
+%For model comprehension and perceived complexity, 
+In addition, answers from subjects who used less than one minute to analyze the model and provide six answers (five comprehension questions and one perceived complexity question) were removed.
+Only surveys that provided enough information to test more than one hypothesis were used in this study.
+The number of resulting surveys was \Sexpr{nrow(data)}.
+%In addition, surveys from subjects without notation experience or training were removed, resulting in  \Sexpr{sum(data$notation.experience != 1)} surveys.
+
+<<sample>>=
+#data <- subset(data,notation.experience > 1)
+# Remove answers from subjects that took less a minute to complete model comprehension and perceived complexity
+data$A.Correct[data$A.Time < 60] <- NA
+data$A.perceived[data$A.Time < 60] <- NA
+data$A.Efficacy[data$A.Time < 60] <- NA
+data$A.Efficiency[data$A.Time < 60] <- NA
+data$A.Time[data$A.Time < 60] <- NA
+
+data$B.Correct[data$B.Time < 60] <- NA
+data$B.perceived[data$B.Time < 60] <- NA
+data$B.Efficacy[data$B.Time < 60] <- NA
+data$B.Efficiency[data$B.Time < 60] <- NA
+data$B.Time[data$B.Time < 60] <- NA
+
+
+mk.min <- function(df)
+{
+  a <- length(na.omit(df$A.Correct))
+  b <- length(na.omit(df$B.Correct))
+  c <- if(a > b) b else a
+  d <- length(na.omit(data$A.perceived))
+  e <- length(na.omit(data$B.perceived))
+  f <- if(d > e) e else d
+  return(if(c > f) f else c)
+}
+
+mk.wmin <- function(df)
+{
+  l <- c(length(na.omit(df$Weights.CasePlan)), length(na.omit(df$Weights.Stage)), 
+         length(na.omit(df$Weights.DStage)), length(na.omit(df$Weights.PlanFrag)), 
+         length(na.omit(df$Weights.CFileItem)), length(na.omit(df$Weights.Task)), 
+         length(na.omit(df$Weights.DTask)), length(na.omit(df$Weights.NBHTask)), 
+         length(na.omit(df$Weights.ProcTask)), length(na.omit(df$Weights.CaseTask)), 
+         length(na.omit(df$Weights.CaseTasknim)), length(na.omit(df$Weights.BHTask)), 
+         length(na.omit(df$Weights.Event)), length(na.omit(df$Weights.UserEvent)), 
+         length(na.omit(df$Weights.TimerEvent)), length(na.omit(df$Weights.Milestone)), 
+         length(na.omit(df$Weights.Connector)), length(na.omit(df$Weights.HumanIcon)), 
+         length(na.omit(df$Weights.CPlanningT)), length(na.omit(df$Weights.EPlanningT)), 
+         length(na.omit(df$Weights.AComplete)), length(na.omit(df$Weights.Collapsed)), 
+         length(na.omit(df$Weights.Expanded)), length(na.omit(df$Weights.ManualA)), 
+         length(na.omit(df$Weights.Repetition)), length(na.omit(df$Weights.Required)), 
+         length(na.omit(df$Weights.EntryCritWC)), length(na.omit(df$Weights.EntryCrit)), 
+         length(na.omit(df$Weights.ExitCritWC)), length(na.omit(df$Weights.ExitCrit)), 
+         length(na.omit(df$Weights.EntryCritAND)), length(na.omit(df$Weights.EntryCritOR)), 
+         length(na.omit(df$Weights.ExitCritAND)), length(na.omit(df$Weights.ExitCritOR))) 
+  return(paste(min(l),"and",max(l)))
+}
+
+
+cat(paste("Number of usable surveys:",nrow(data),
+            "\nNumber of samples per hypothesis:",
+            "\n    H1 (Model comprehension): model A", length(na.omit(data$A.Correct)),
+                      "model B: ",length(na.omit(data$B.Correct)),
+            "\n    H2 (Perceived complexity): model A",length(na.omit(data$A.perceived)),
+                      "model B:",length(na.omit(data$B.perceived)),
+            "\n    H3 (Perceived vs comprehension):", mk.min(data),
+            "\n    H4 (Pairwise comparison):",length(na.omit(data$C.Compare)),
+            "\n    H5 (Weights validation): between",mk.wmin(data)
+            ))
+@
+
+For hypotheses H1, H2, and H3, a sample size of 80 was required (see \cref{table:modelCPowerCal}).
+Therefore, enough sample data was available for testing these hypotheses.
+For hypothesis H4, a sample size of 135 was required (see \cref{table:PairwisePowerCal}).
+This sample size was not reached, therefore the test was considered exploratory research.
+Finally, for hypothesis H5, a sample size of $15$ was required (see \cref{table:WeightsPowerCal}).
+The sample size was not reached, therefore the test was considered exploratory research.
+
+
+\subsection{Normality}\label{sec:testNormality}
+In order to determine normality, measures of skewness and kurtosis were calculated for the dependent variables using a ratio scale, as well as the Shapiro-Wilk test of normality along with a series of plots.
+\Cref{table:skshapiro} shows the results. 
+Skewness and kurtosis were found to be within the standard range for most variables, except for time (A.Time and B.Time) where both values (skewness and kurtosis) were found to be high, indicating non-normality.
+The Shapiro-Wilk tests indicated significant non-normality for all variables.
+
+In addition, a series of plots were constructed in order to further explore the extent of normality of the dependent variables (see \fileRef{FILESurveyStats}{sec:normalityPlots}{Section 4.2}).
+Descriptive statistics for the dependent variables were also calculated (see \fileRef{FILESurveyStats}{sec:descriptiveStats}{Section 4.1}).
+
+
+<<begin-probl1, results="asis">>=
+ 
+#test.normal.sample.data()
+
+mk <- normality.stats(data, c("A.Correct", "A.Time", "A.Efficacy", "A.Efficiency",
+                              "B.Correct", "B.Time", "B.Efficacy", "B.Efficiency"))
+print(xtable(mk, caption = "skewness, kurtosis, and Shapiro test values\\label{table:skshapiro}", 
+             digits = c(0,0,0,7,7,3,4)), include.rownames = FALSE)
+
+#tst <- mk.correlation(data,c("A.Efficacy","A.Efficiency","A.Time","A.Correct"), 
+#                      c("iv.A.CC","iv.A.CL","iv.A.CS","iv.A.CAS"))
+#knitr::kable(tst, caption = "test of corr", longtable=TRUE, escape=FALSE)
+rm(mk)
+@
+
+\FloatBarrier
+\subsection{Times}
+The \Sexpr{length(na.omit(data$A.Time))} subjects who answered model A's questions took an average of \reportMeanFullUnits{minutes}{10}{20}{105} 
+% \Sexpr{round(mean(data$A.Time,na.rm=TRUE)/60, digits =0)}$\pm$\Sexpr{round(sd(data$A.Time, na.rm=TRUE)/60, digits =0)} minutes 
+to answer the questions;
+while the \Sexpr{length(na.omit(data$B.Time))} subjects who answered model B's questions took an average of \reportMeanFullUnits{minutes}{5}{4}{101}, 
+% \Sexpr{round(mean(data$B.Time,na.rm=TRUE)/60, digits =0)}$\pm$\Sexpr{round(sd(data$B.Time, na.rm=TRUE)/60, digits =0)} minutes, 
+which seems to indicate either subject fatigue or learning.
+
+<<time-test, fig.width=6, fig.height=5, out.width='.4\\linewidth', echo = FALSE, results="asis">>=
+tm <- data.frame(Name = c("A.Time","B.time"), 
+                 N = c(length(na.omit(data$A.Time)),length(na.omit(data$B.Time))),
+                 Mean = c(as.integer(round(mean(data$A.Time,na.rm=TRUE)/60, digits =0)),
+                          as.integer(round(mean(data$B.Time,na.rm=TRUE)/60, digits =0))),
+                 SD = c(as.integer(round(sd(data$A.Time, na.rm=TRUE)/60, digits =0)),
+                        as.integer(round(sd(data$B.Time,na.rm=TRUE)/60, digits =0))))
+print(xtable(tm, caption = "Answering times for model A and model B\\label{table:timesAB}"), 
+      include.rownames = FALSE)
+
+#cat(paste("A.Time: N",length(na.omit(data$A.Time)),
+#            "mean",round(mean(data$A.Time,na.rm=TRUE)/60, digits =0),
+#            "minutes, SD",round(sd(data$A.Time, na.rm=TRUE)/60, digits =0),
+#            "minutes\nB.Time: N",length(na.omit(data$B.Time)),
+#            "mean",round(mean(data$B.Time,na.rm=TRUE)/60, digits =0),
+#            "minutes, SD",round(sd(data$B.Time,na.rm=TRUE)/60, digits =0),"minutes"
+#            ))
+#tm <- data.frame(name = c("A.Correct", "A.Time", "A.Efficacy", "A.Efficiency",
+#                          "B.Correct", "B.Time", "B.Efficacy", "B.Efficiency"),
+#                 N.quick.Tutorial = c(length(na.omit(data$A.Correct[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$A.Time[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$A.Efficacy[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$A.Efficiency[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$B.Correct[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$B.Time[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$B.Efficacy[data$Tutorial.Time <= 240])),
+#                                      length(na.omit(data$B.Efficiency[data$Tutorial.Time <= 240]))),
+#                 mean.quick.Tutorial = c(round(mean(data$A.Correct[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$A.Time[data$Tutorial.Time <= 240],na.rm=TRUE)/60, digits = 2),
+#                                         round(mean(data$A.Efficacy[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$A.Efficiency[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Correct[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Time[data$Tutorial.Time <= 240],na.rm=TRUE)/60, digits = 2),
+#                                         round(mean(data$B.Efficacy[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Efficiency[data$Tutorial.Time <= 240],na.rm=TRUE), digits = 2)),
+#                 N.long.Tutorial = c(length(na.omit(data$A.Correct[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$A.Time[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$A.Efficacy[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$A.Efficiency[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$B.Correct[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$B.Time[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$B.Efficacy[data$Tutorial.Time > 240])),
+#                                      length(na.omit(data$B.Efficiency[data$Tutorial.Time > 240]))),
+#                 mean.long.Tutorial  = c(round(mean(data$A.Correct[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$A.Time[data$Tutorial.Time > 240],na.rm=TRUE)/60, digits = 2),
+#                                         round(mean(data$A.Efficacy[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$A.Efficiency[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Correct[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Time[data$Tutorial.Time > 240],na.rm=TRUE)/60, digits = 2),
+#                                         round(mean(data$B.Efficacy[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2),
+#                                         round(mean(data$B.Efficiency[data$Tutorial.Time > 240],na.rm=TRUE), digits = 2))
+#                 )
+#knitr::kable(tm, caption = "Short vs long tutorial times\\label{table:tmShortLong}", longtable=TRUE, escape=FALSE)
+#
+#rm(tm)
+#
+#data$Tutorial.duration <- ifelse(data$Tutorial.Time > 240,"Long","Short")
+#boxplot.tutorial(data, "Tutorial.duration", c("A.Correct",   "B.Correct",
+#                                              "A.Time",      "B.Time",
+#                                              "A.Efficacy",  "B.Efficacy",
+#                                              "A.Efficiency","B.Efficiency"))
+
+#tst <- mk.two.sample.wilcoxon.tutorial(data, c("A.Correct", "A.Time", "A.Efficacy", "A.Efficiency",
+#                          "B.Correct", "B.Time", "B.Efficacy", "B.Efficiency"))
+#knitr::kable(tst, caption = "Wilcoxon test with tutorial duration\\label{table:tmTutdur}", longtable=TRUE, escape=FALSE)
+
+#cor.test(data$Survey.Time,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+#cor.test(data$notation.experience,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+#cor.test(data$Notation.count,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+#cor.test(data$Work,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+#cor.test(data$A.perceived,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+#cor.test(data$B.perceived,data$Tutorial.Time,alternative="two.sided",method="spearman", exact = FALSE, continuity=TRUE)
+@
+
+\subsection{Hypothesis Testing}\label{sec:expHypotesisTesting}
+This section describes the statistical analysis conducted in order to test the hypotheses presented in \cref{sec:expHypotheses}.
+
+
+\subsubsection{Model Comprehension}\label{sec:expTestComprehension}
+Correlations were conducted in order to determine whether negative correlations existed between calculated complexity and model comprehension as predicted in \cref{fig:HypothesizedRelationship}. 
+Due to the presence of non-normality Spearman's correlation coefficient was used in all of the correlations conducted  (see \cref{sec:testNormality}).
+\Cref{table:AcorreComprehen} and \cref{table:BcorreComprehen} present the results of these correlations.
+In addition, a set of scatter-plots was created for visual inspection of the relationship between these variables were conducted (see \fileRef{FILESurveyStats}{sec:MCscatterplots}{Section 4.3.1}).
+As shown in the tables, no significant correlations were found between these sets of variables, with the exception of \texttt{B.Efficiency} against \texttt{iv.B.CC} with $\rho(99) = 0.213, p < 0.05$.
+However, this correlation was not confirmed using  \texttt{A.Efficiency} against \texttt{iv.A.CC} or the scatter-plots.
+
+Looking at the descriptive statistics presented in \fileRef{FILESurveyStats}{sec:descriptiveStats}{Section 4.1} \fileRef{FILESurveyStats}{table:RatioDescrStats}{Table 1}, the average number of correct answers for model A was \reportMeanFull{2.87}{1.4}{99} and for model B \reportMeanFull{2.98}{1.33}{88}, which seems to indicate that, based on the number of correct answers, the subjects' maintained or showed a very small improvement in how they answered the questions for model B.
+However, subjects answered the questions related to the second model (model B) in half the time (average \reportMeanFullUnits{minutes}{5}{4}{101}) that they used to answer the questions related to the first model (model A took an average of \reportMeanFullUnits{minutes}{10}{20}{105}).
+%However, subjects took an average of \reportMeanFullUnits{minutes}{10}{20}{105} to answer model A's questions, they took an average of \\reportMeanFullUnits{minutes}{5}{4}{101} to answer model B's questions.
+Therefore, a post-hoc analysis using a two-sample Wilcoxon signed-rank test for pair data was conducted to test if the observations for model A and B had the same data distribution.
+%It was expected that both models should have the same data distribution.
+For this test the null hypothesis was that observations (correct answers, time, efficacy, and efficiency) for both model A and model B had the same data distribution.
+\Cref{table:PairWilcox} shows the results.
+The null hypothesis was rejected for time and efficiency with a $p = 0.001$.
+This seems to indicate that subjects did answer model B's questions faster (in about half of the time used for model A), and that they were more efficient \reportMeanFull{0.012}{0.008}{88} for model B versus \reportMeanFull{0.009}{0.006}{99} for model A).
+However, the null hypothesis cannot be rejected for correct answers and for efficacy.
+This seems to indicate that subjects maintained the same number of correct answers and efficacy. 
+
+<<A-model-comprehen, results="asis">>=
+#mk <- normality.stats(data, c("A.Correct","A.Time","A.Efficacy","A.Efficiency"))
+#knitr::kable(mk, caption = "Measures of Skewness, Kurtosis, and Shapiro-Wilk for model A", 
+#             longtable=TRUE, escape=FALSE)
+
+tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), 
+                      c("iv.A.CC","iv.A.CL","iv.A.CS","iv.A.CAS"))
+print(xtable(tst, caption = "Correlation for model A against independent variables\\label{table:AcorreComprehen}", align=c("l","l","r","r","r","r")), include.rownames = FALSE)
+cat("Note: each cell contains $\\rho$ followed by p and (df). p is empty for $p>0.05$, * for $p<0.05$, ** for $p<0.01$, and *** for $p<0.001$")
+tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), 
+                      c("iv.B.CC","iv.B.CL","iv.B.CS","iv.B.CAS"))
+print(xtable(tst, caption = "Correlation for model B against independent variables\\label{table:BcorreComprehen}", align=c("l","l","r","r","r","r")), include.rownames = FALSE)
+
+tst <- mk.paired.wilcoxon.test(data,c("Correct","Time","Efficacy","Efficiency"))
+print(xtable(tst, caption = "Paired Wilcoxon test\\label{table:PairWilcox}"), include.rownames = FALSE)
+
+
+rm(tst)
+@
+
+
+\subsubsection{Perceived Complexity}\label{sec:expTestPerceived}
+%Although perceived complexity is an ordinal variable and the calculated complexity is a ratio scale variable, the Spearman's correlation is appropriate for this test. [Need reference]
+Correlations were conducted in order to determine whether positive correlations existed between calculated complexity and perceived complexity as predicted in \cref{fig:HypothesizedRelationship}. 
+Due to the presence of non-normality Spearman's correlation was used.
+\Cref{table:AcorrePerceived,table:BcorrePerceived} present the results of these correlations.
+In addition, a set of scatter-plots was created for visual inspection of the relationship between these variables (see \fileRef{FILESurveyStats}{sec:PCscatterplots}{Section 4.3.2}).
+As shown in the tables, no significant correlations were indicated between these sets of variables, with the exception of \texttt{A.perceived} against \texttt{iv.A.CC} with $\rho(102) = 0.197, p < 0.05$ and against \texttt{iv.A.CAS} with $\rho(102) = -0.197, p < 0.05$.
+However, this was not confirmed by model B's correlations or scatter-plots.
+
+<<A-perceived-compl, results="asis">>=
+#mk <- normality.stats(data, c("A.perceived"))
+#knitr::kable(mk, caption = "Measures of Skewness, Kurtosis, and Shapiro-Wilk for model A (Perceived)", 
+#             longtable=TRUE, escape=FALSE)
+
+tst <- mk.correlation(data,c("A.perceived"), c("iv.A.CC","iv.A.CL","iv.A.CS","iv.A.CAS"))
+print(xtable(tst, caption = "Correlation for model A against independent variables\\label{table:AcorrePerceived}", align=c("l","l","r","r","r","r")), include.rownames = FALSE)
+tst <- mk.correlation(data,c("B.perceived"), c("iv.B.CC","iv.B.CL","iv.B.CS","iv.B.CAS"))
+print(xtable(tst, caption = "Correlation for model B against independent variables\\label{table:BcorrePerceived}", align=c("l","l","r","r","r","r")), include.rownames = FALSE)
+
+
+#tst <- mk.paired.wilcoxon.test(data,c("perceived"))
+#print(xtable(tst, caption = "Paired Wilcoxon test\\label{table:PPairWilcox}"), include.rownames = FALSE)
+                        
+rm(tst)
+@
+
+
+\subsubsection{Perceived Complexity and Model Comprehension}\label{sec:expTestPerceivedVsComprehension}
+Correlations were conducted in order to determine whether negative correlations existed between calculated complexity and model comprehension as predicted in \cref{fig:HypothesizedRelationship}. 
+Due to the presence of non-normality Spearman's correlation was used.
+In addition, a set of scatter-plots was created for visual inspection of the relationships between these variables (see \fileRef{FILESurveyStats}{sec:PCMCscatterplots}{Section 4.3.3}).
+\Cref{table:perceivedAndCompreh} presents the results of these correlations.
+As shown in \cref{table:perceivedAndCompreh}, significant correlations were found between perceived complexity (A and B) and \texttt{A.Correct}, \texttt{A.Efficacy}, and \texttt{A.Efficiency}.
+But these were not confirmed by \texttt{B.Correct}, \texttt{B.Efficacy}, or \texttt{B.Efficiency}; which was likely a result of the fatigue effect.
+
+<<perceived-comprehen, results="asis">>=
+tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency",
+                             "B.Correct","B.Time","B.Efficacy","B.Efficiency"), 
+                           c("A.perceived","B.perceived"))
+print(xtable(tst, caption = "Correlation between model comprehension and perceived complexity\\label{table:perceivedAndCompreh}", align=c("l","l","r","r")), include.rownames = FALSE)
+rm(tst)
+@
+
+\subsubsection{Pairwise Comparison}\label{sec:expTestPairwise}
+The pairwise comparison test for hypotheses \hyperlink{itm:h4n}{$H4_0$}, and \hyperlink{itm:h4a}{$H4_a$} described in \cref{sec:expDsgPairwise} used a one way ANOVA as the first step.
+For visual inspection of the data, a set of box-plots and frequency plots were created (see \fileRef{FILESurveyStats}{sec:PairwisePlots}{Section 4.4}).
+In addition, \fileRef{FILESurveyStats}{table:CompGroup}{Table 3} shows the descriptive statistics for each group.
+
+First, a post-hoc power analysis calculation was conducted.
+This was done because the sample size of $105$ observations was below that of the required sample size of $135$ (see \cref{table:PairwisePowerCal}).
+The post-hoc power analysis calculation was conducted using $105$ observations and keeping the rest of the parameters the same as indicated in \cref{table:PairwisePowerCal} for large effect.
+This resulted in an actual power ($1-\beta$  err probability) of 68\% ($0.685$) and a critical F of $1.803$.
+
+Secondly, The ANOVA test with the null hypothesis \hyperlink{itm:h4n}{$H4_0$} with all the group means being the same ($H4a_0: \mu(m1vs2) = Metric[m1vs2],  \ldots, \mu(m5vs6) = Metric[m5vs6]$) was conducted. 
+\Cref{table:CompGroupANOVA} shows a $F(14,90) = 0.61, p = 0.857$, where the $p$ value is too high to reject the null hypothesis that all the group means are equal. 
+Therefore, the groups may have the same mean, and the Tukey multiple comparisons test was not conducted because the ANOVA null hypothesis was not rejected.
+
+As described in \cref{sec:ivDescription}, the metric $CTS$ was maintained constant at $90$ for all of the models, therefore it was not used as a variable in the experiment.
+The fact that $CTS$ was kept constant means that all of the models are equally complex under $CTS$, which corresponds to $5$ in the 9-point Likert scale being used for \texttt{C.Compare}. 
+Therefore, a post-hoc two-tailed Wilcoxon signed-rank test was conducted to test the null hypothesis that $\mu(\texttt{C.Compare}) = 5$.
+As shown in \cref{table:CompWilcoxGroup}, the null hypothesis cannot be rejected, indicating that $CTS$ may be the correct complexity metric.
+A post-hoc power analysis calculation was conducted for the two-tailed Wilcoxon signed-rank test.
+The effect size was set to 0.50 (medium effect), $\alpha$ to $0.05$, and the sample size to $105$.
+This resulted in an actual power ($1-\beta$  err probability) of 99\% ($0.998$).
+However, more research is required to test this new hypothesis.
+
+%%TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
+%%Try to do a rater agreement statistical test (used in SLR id 1488). See these links:
+%% http://www.john-uebersax.com/stat/agree.htm
+%% http://johnuebersax.blogspot.co.za/2009/08/statistical-methods-for-rater-agreement.html
+%% file:///E:/var2/PhD/pdf/2016/Interrater%20Reliability%20_Combined.pdf
+%% http://docshare01.docshare.tips/files/1361/13613518.pdf
+%% http://john-uebersax.com/stat/Uebersax%201992%20Inv%20Radiol.pdf
+%% https://en.wikipedia.org/wiki/Inter-rater_reliability
+%%TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
+
+<<pairwise-test, echo = FALSE, results="asis">>=
+# first subset the data and extract complete cases
+pair.df <- subset(data, select = c(C.Compare,iv.C.calc))
+pair.df <- pair.df[complete.cases(pair.df),]
+
+#replications(C.Compare ~ iv.C.calc, data = pair.df)
+
+# let do the ANOVA
+aov.pair <- aov(C.Compare ~ iv.C.calc, data = pair.df)
+#print(aov.pair)
+print(xtable(aov.pair, caption = "C.Compare groups ANOVA\\label{table:CompGroupANOVA}", 
+       digits = c(0,0,3,3,3,4)), sanitize.text.function=NULL)
+      
+
+tbl <- mk.wilcoxon.test(data,c("C.Compare"),5)
+print(xtable(tbl, caption = "C.Compare Wilcoxon \\label{table:CompWilcoxGroup}", 
+             digits=c(0,0,0,2,2,0,2,0)), include.rownames = FALSE)
+
+### Some extra exploratory tests for this section:
+#for(c in unique(data$Tutorial.duration))
+#{
+#  x <- data$C.Compare[data$Tutorial.duration == c]
+#  plot.pairwise.X(x)
+#}
+
+#ano <- oneway.ANOVA(data,"C.Compare", c(#"iv.C.order3.CC","iv.C.order3.CL","iv.C.order3.CS","iv.C.order3.CAS",
+#                                       "iv.C.order15.CC","iv.C.order15.CL","iv.C.order15.CS","iv.C.order15.CAS"))
+#knitr::kable(ano, caption = "C.Compare ANOVA\\label{table:CompANOVA}", longtable=TRUE, escape=FALSE)
+
+# let unpack the ANOVA
+#df <- subset(data, select = c("C.Compare","Tutorial.Time","iv.C.calc"))
+#df <- df[complete.cases(df),]
+#tst <- aov(C.Compare ~ Tutorial.Time + iv.C.calc, data = df)
+#summary(tst)
+#TukeyHSD(tst,"iv.C.calc")
+
+#ano <- oneway.ANOVA(data,"C.Compare", c("iv.C.CC","iv.C.CL","iv.C.CS","iv.C.CAS"))
+#knitr::kable(ano, caption = "C.Compare ANOVA\\label{table:CompANOVA}", longtable=TRUE, escape=FALSE)
+
+
+#tst <- mk.correlation(data,c("C.Compare"), 
+#                      c("iv.C.CC","iv.C.CL","iv.C.CS","iv.C.CAS"))
+#knitr::kable(tst, caption = "Pairwise correlation\\label{table:pairCorrelation}", longtable=TRUE, escape=FALSE)
+#rm(tst,df)
+@
+
+
+\subsubsection{Complexity Weights Validation}\label{sec:expTestWeigts}
+The dependent variables for the set of weights are ordinal and based on a Likert scale.
+Therefore, instead of using a one-sample t-test, a Wilcoxon signed-rank test was selected to compare the dependent variables against the hypothesized population mean.
+\Cref{table:weightsWilcox} summarizes the results of the Wilcoxon signed-rank test.
+Statistically significant differences between the weight observations and the hypothesized population means were found with respect to some of the variables as shown in \cref{table:weightsWilcox}.
+
+However, the sample size of those variables was between 7 and 13, and a post-hoc power calculation was conducted using the same parameters for large effect as shown in \cref{table:WeightsPowerCal}, resulting in an actual power ($1-\beta$  err probability) between 40\% ($0.406$ for a sample size of 7) and 73\% ($0.731$ for a sample size of 13). %%, with 53\% ($0.534$ for a sample size of 9).
+Which is much lower than the original expected power of 80\%.
+Therefore, there is only a 40\% to 73\% probability of rejecting the null hypothesis for large effects when it is actually false.
+A set of frequency plots for the weight dependent variables are shown in \fileRef{FILESurveyStats}{sec:WeigtsPlots}{Section 4.4.3}.
+Each plot shows in parenthesis the hypothesized population mean, which allows for the interpretation of the data presented in \cref{table:weightsWilcox}.
+
+
+<<weights-t-stats, fig.width=2.5, fig.height=2.5, echo = FALSE, results="asis">>=
+tbl <- mk.wilcoxon.test(data,gsub("\\.W$","",sub("^iv\\.w","Weights",names(ws))), unlist(ws))
+print(xtable(tbl, longtable=TRUE, caption = "Wilcoxon signed-rank test\\label{table:weightsWilcox}",
+             digits=c(0,0,0,2,2,0,2,0)), include.rownames = FALSE)
+
+#plot.weights(data,gsub("\\.W$","",sub("^iv\\.w","Weights",names(ws))), unlist(ws))
+@
+
+
+<<weights-post-hoc, fig.width=2.5, fig.height=2.5, echo = FALSE>>=
+########## Now let do a post-hoc with the weights
+##cc.scale <- function(n)
+##{
+##  return(round(((3/7)*n)+(3-((3/7)*8)), digits = 0))
+##}
+### These are the variables containing weights
+##weight.names <- c("iv.w.CasePlan","iv.w.Stage","iv.w.DStage","iv.w.PlanFrag","iv.w.CFileItem",
+##    "iv.w.Task","iv.w.DTask","iv.w.NBHTask","iv.w.ProcTask","iv.w.CaseTask","iv.w.CaseTasknim",
+##    "iv.w.BHTask","iv.w.Event","iv.w.UserEvent","iv.w.TimerEvent","iv.w.Milestone",
+##    "iv.w.Connector","iv.w.HumanIcon","iv.w.CPlanningT","iv.w.EPlanningT",
+##    "iv.w.AComplete","iv.w.Collapsed","iv.w.Expanded","iv.w.ManualA","iv.w.Repetition",
+##    "iv.w.Required","iv.w.EntryCritWC","iv.w.EntryCrit","iv.w.ExitCritWC","iv.w.ExitCrit",
+##    "iv.w.EntryCritAND","iv.w.EntryCritOR","iv.w.ExitCritAND","iv.w.ExitCritOR")
+##
+#### But first let recalculate CC, to be sure we get the same values for the four models
+##ck <- iv #subset(iv, select = c("iv.model", "iv.CC"))
+##ck$CC.test <- rowSums(data.frame(with(ws.original,{Map(`*`,ck[weight.names],mget(paste0(weight.names,".W")))})))
+##
+##cat(paste0("Model",ck$iv.Model," [CC: ",ck$iv.CC," = ", ck$CC.test," calculated]\n"))
+##
+##ws.new <- data.frame(tmp = c(0))
+##for(i in 1:nrow(tbl))
+##{
+##  ws.new[[paste0(sub("Weights","iv.w",tbl[i,"Name"]),".W")]] <- 
+##    if(grepl("p",tbl[i,"p"]) == c(TRUE)) cc.scale(tbl[i,"Mean"]) else cc.scale(tbl[i,"mu"])
+##}
+##ws.new
+##
+##ck$CC.new <- rowSums(data.frame(with(ws.new,{Map(`*`,ck[weight.names],mget(paste0(weight.names,".W")))})))
+##cat(paste0("Model",ck$iv.Model," [CC: ",ck$iv.CC," = ", ck$CC.test," calculated] = ",ck$CC.new,"\n"))
+##
+##data$iv.A.CC.new <- NA
+##data$iv.B.CC.new <- NA
+##for(i in 1:nrow(ck))
+##{
+##  data$iv.A.CC.new[data$iv.A.CC == ck[[i,"iv.CC"]]] <- ck[[i,"CC.new"]]
+##  data$iv.B.CC.new[data$iv.B.CC == ck[[i,"iv.CC"]]] <- ck[[i,"CC.new"]]
+##}
+@
+
+<<weights-post, fig.width=2.5, fig.height=2.5, echo = FALSE, results="asis">>=
+##tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), c("iv.A.CC.new"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:XAcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), c("iv.B.CC.new"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:XBcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("A.perceived"), c("iv.A.CC.new"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:XAcorrePerceived}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.perceived"), c("iv.B.CC.new"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:XBcorrePerceived}"), include.rownames = FALSE)
+@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% This section will not be included in the main document %%%
+%%% (Used to resolve references when compiled stand alone) %%%
+%!-EXCLUDE-!%
+\section{Exploratory Tests}
+<<explore-test, echo = FALSE, results="asis">>=
+a.names <- c("iv.A.CS.SC","iv.A.CS.SS","iv.A.CS.SDS","iv.A.CS.SPF","iv.A.CS.DI","iv.A.CS.PT","iv.A.CS.PDT","iv.A.CS.PE","iv.A.CS.PM","iv.A.CS.OC","iv.A.CAS.DCP","iv.A.CAS.DEP","iv.A.CAS.DAC","iv.A.CAS.DC","iv.A.CAS.DE","iv.A.CAS.DMA","iv.A.CAS.DRN","iv.A.CAS.DR","iv.A.CAS.SE","iv.A.CAS.SX","iv.A.CAS.MH","iv.A.CAS.MP","iv.A.CAS.MC","iv.A.CAS.MHB","iv.A.CAS.MT")
+
+b.names <- c("iv.B.CS.SC","iv.B.CS.SS","iv.B.CS.SDS","iv.B.CS.SPF","iv.B.CS.DI","iv.B.CS.PT","iv.B.CS.PDT","iv.B.CS.PE","iv.B.CS.PM","iv.B.CS.OC","iv.B.CAS.DCP","iv.B.CAS.DEP","iv.B.CAS.DAC","iv.B.CAS.DC","iv.B.CAS.DE","iv.B.CAS.DMA","iv.B.CAS.DRN","iv.B.CAS.DR","iv.B.CAS.SE","iv.B.CAS.SX","iv.B.CAS.MH","iv.B.CAS.MP","iv.B.CAS.MC","iv.B.CAS.MHB","iv.B.CAS.MT")
+
+cat("Model comprehension correlations:")
+tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), a.names)
+print(xtable(t(tst), caption = "Correlation for models A against independent variables\\label{table:AcorreComprehen}", align=c("r","r","r","r","r")), include.rownames = TRUE)
+
+tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), b.names)
+print(xtable(t(tst), caption = "Correlation for models B against independent variables\\label{table:BcorreComprehen}"), align=c("r","r","r","r","r"), include.rownames = TRUE)
+
+cat("Perceived complexity correlations:")
+tst <- mk.correlation(data,c("A.perceived"), a.names)
+print(xtable(t(tst), caption = "Correlation for models A against independent variables\\label{table:AcorrePerceived}", align=c("r","r")), include.rownames = TRUE)
+tst <- mk.correlation(data,c("B.perceived"), b.names)
+print(xtable(t(tst), caption = "Correlation for models B against independent variables\\label{table:BcorrePerceived}", align=c("r","r")), include.rownames = TRUE)
+
+rm(tst)
+@
+
+
+\subsection{Let Plot per Model}
+Now, let see what the average is per each model.
+Note that DMC (Different modeling concepts -- from LaRosa2011mana (id 101)).
+
+<<explore3-test, echo = FALSE, , fig.width=4, fig.height=4, out.width='.4\\linewidth', results="asis">>=
+## Let use all the modeling concepts
+A <- subset(data,select=c(iv.A.CS.SC,iv.A.CS.SS,iv.A.CS.SDS,iv.A.CS.SPF,iv.A.CS.DI,iv.A.CS.PT,iv.A.CS.PDT,iv.A.CS.PE,iv.A.CS.PM,iv.A.CS.OC,iv.A.CAS.DCP,iv.A.CAS.DEP,iv.A.CAS.DAC,iv.A.CAS.DC,iv.A.CAS.DE,iv.A.CAS.DMA,iv.A.CAS.DRN,iv.A.CAS.DR,iv.A.CAS.SE,iv.A.CAS.SX,iv.A.CAS.MH,iv.A.CAS.MP,iv.A.CAS.MC,iv.A.CAS.MHB,iv.A.CAS.MT))
+
+A[is.na(A)] <- 0
+data$iv.A.DMC <- rowSums(A != 0)
+rm(A)
+
+B <- subset(data,select=c(iv.B.CS.SC,iv.B.CS.SS,iv.B.CS.SDS,iv.B.CS.SPF,iv.B.CS.DI,iv.B.CS.PT,iv.B.CS.PDT,iv.B.CS.PE,iv.B.CS.PM,iv.B.CS.OC,iv.B.CAS.DCP,iv.B.CAS.DEP,iv.B.CAS.DAC,iv.B.CAS.DC,iv.B.CAS.DE,iv.B.CAS.DMA,iv.B.CAS.DRN,iv.B.CAS.DR,iv.B.CAS.SE,iv.B.CAS.SX,iv.B.CAS.MH,iv.B.CAS.MP,iv.B.CAS.MC,iv.B.CAS.MHB,iv.B.CAS.MT))
+
+B[is.na(B)] <- 0
+data$iv.B.DMC <- rowSums(B != 0)
+rm(B)
+
+for(n in sort(unique(data$iv.A.model)))
+{
+  cat(paste("\n\n model ",as.character(n),"DMC=",mean(data$iv.A.DMC[data$iv.A.model == n])))
+}
+
+tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), c("iv.A.DMC"))
+print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:xYAcorreComprehen}"), include.rownames = FALSE)
+tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), c("iv.B.DMC"))
+print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:xYBcorreComprehen}"), include.rownames = FALSE)
+tst <- mk.correlation(data,c("A.perceived"), c("iv.A.DMC"))
+print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:xYAcorrePerceived}"), include.rownames = FALSE)
+tst <- mk.correlation(data,c("B.perceived"), c("iv.B.DMC"))
+print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:xYBcorrePerceived}"), include.rownames = FALSE)
+
+#### Now let use only the entities
+##A <- subset(data,select=c(iv.A.CS.SC,iv.A.CS.SS,iv.A.CS.SDS,iv.A.CS.SPF,iv.A.CS.DI,iv.A.CS.PT,iv.A.CS.PDT,iv.A.CS.PE,iv.A.CS.PM,iv.A.CS.OC))
+##
+##A[is.na(A)] <- 0
+##data$iv.A.DMC <- rowSums(A != 0)
+##rm(A)
+##
+##B <- subset(data,select=c(iv.B.CS.SC,iv.B.CS.SS,iv.B.CS.SDS,iv.B.CS.SPF,iv.B.CS.DI,iv.B.CS.PT,iv.B.CS.PDT,iv.B.CS.PE,iv.B.CS.PM,iv.B.CS.OC))
+##
+##B[is.na(B)] <- 0
+##data$iv.B.DMC <- rowSums(B != 0)
+##rm(B)
+##
+##for(n in sort(unique(data$iv.A.model)))
+##{
+##  cat(paste("\n\n model ",as.character(n),"DMC=",mean(data$iv.A.DMC[data$iv.A.model == n])))
+##}
+##
+##tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), c("iv.A.DMC"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:2xYAcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), c("iv.B.DMC"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:2xYBcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("A.perceived"), c("iv.A.DMC"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:2xYAcorrePerceived}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.perceived"), c("iv.B.DMC"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:2xYBcorrePerceived}"), include.rownames = FALSE)
+##
+#### Now let do only annotators
+##A <- subset(data,select=c(iv.A.CAS.DCP,iv.A.CAS.DEP,iv.A.CAS.DAC,iv.A.CAS.DC,iv.A.CAS.DE,iv.A.CAS.DMA,iv.A.CAS.DRN,iv.A.CAS.DR,iv.A.CAS.SE,iv.A.CAS.SX,iv.A.CAS.MH,iv.A.CAS.MP,iv.A.CAS.MC,iv.A.CAS.MHB,iv.A.CAS.MT))
+##
+##A[is.na(A)] <- 0
+##data$iv.A.DMC <- rowSums(A != 0)
+##rm(A)
+##
+##B <- subset(data,select=c(iv.B.CAS.DCP,iv.B.CAS.DEP,iv.B.CAS.DAC,iv.B.CAS.DC,iv.B.CAS.DE,iv.B.CAS.DMA,iv.B.CAS.DRN,iv.B.CAS.DR,iv.B.CAS.SE,iv.B.CAS.SX,iv.B.CAS.MH,iv.B.CAS.MP,iv.B.CAS.MC,iv.B.CAS.MHB,iv.B.CAS.MT))
+##
+##B[is.na(B)] <- 0
+##data$iv.B.DMC <- rowSums(B != 0)
+##rm(B)
+##
+##for(n in sort(unique(data$iv.A.model)))
+##{
+##  cat(paste("\n\n model ",as.character(n),"DMC=",mean(data$iv.A.DMC[data$iv.A.model == n])))
+##}
+##
+##tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), c("iv.A.DMC"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:3xYAcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), c("iv.B.DMC"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:3xYBcorreComprehen}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("A.perceived"), c("iv.A.DMC"))
+##print(xtable(tst, caption = "Correlation for models A against independent variables\\label{table:3xYAcorrePerceived}"), include.rownames = FALSE)
+##tst <- mk.correlation(data,c("B.perceived"), c("iv.B.DMC"))
+##print(xtable(tst, caption = "Correlation for models B against independent variables\\label{table:3xYBcorrePerceived}"), include.rownames = FALSE)
+##
+##
+##cat("Exploring model A (A.perceived)")
+##normality.chart.var(data$A.perceived,"A.perceived")
+##for(n in unique(data$iv.A.model))
+##{
+##  x.A.perceived  <- data$A.perceived[data$iv.A.model == n]
+##  normality.chart.var(x.A.perceived,paste0("A.perceived[",as.character(n),"]"))
+##}
+##rm(x.A.perceived)
+##
+##cat("Exploring model A (A.Correct)")
+##normality.chart.var(data$A.Correct,"A.Correct")
+##for(n in unique(data$iv.A.model))
+##{
+##  x.A.Correct  <- data$A.Correct[data$iv.A.model == n]
+##  normality.chart.var(x.A.Correct,paste0("A.Correct[",as.character(n),"]"))
+##}
+##rm(x.A.Correct)
+##
+##cat("Exploring model A (A.Time)")
+##normality.chart.var(data$A.Time,"A.Time")
+##for(n in unique(data$iv.A.model))
+##{
+##  x.A.Time  <- data$A.Correct[data$iv.A.model == n]
+##  normality.chart.var(x.A.Time,paste0("A.Time[",as.character(n),"]"))
+##}
+##rm(x.A.Time)
+##
+##cat("Exploring model A (A.Efficacy)")
+##normality.chart.var(data$A.Efficacy,"A.Efficacy")
+##for(n in unique(data$iv.A.model))
+##{
+##  x.A.Efficacy <- data$A.Efficacy[data$iv.A.model == n]
+##  normality.chart.var(x.A.Efficacy,paste0("A.Efficacy[",as.character(n),"]"))
+##}
+##rm(x.A.Efficacy)
+##
+##cat("Exploring model A (A.Efficiency)")
+##normality.chart.var(data$A.Efficiency,"A.Efficiency")
+##for(n in unique(data$iv.A.model))
+##{
+##  x.A.Efficiency <- data$A.Efficiency[data$iv.A.model == n]
+##  normality.chart.var(x.A.Efficiency,paste0("A.Efficiency[",as.character(n),"]"))
+##}
+##rm(x.A.Efficiency)
+##
+##cat("Exploring model B (B.perceived)")
+##normality.chart.var(data$B.perceived,"B.perceived")
+##for(n in unique(data$iv.B.model))
+##{
+##  x.B.perceived  <- data$B.perceived[data$iv.B.model == n]
+##  normality.chart.var(x.B.perceived,paste0("B.perceived[",as.character(n),"]"))
+##}
+##rm(x.B.perceived)
+##
+##cat("Exploring model B (B.Correct)")
+##normality.chart.var(data$B.Correct,"B.Correct")
+##for(n in unique(data$iv.B.model))
+##{
+##  x.B.Correct  <- data$B.Correct[data$iv.B.model == n]
+##  normality.chart.var(x.B.Correct,paste0("B.Correct[",as.character(n),"]"))
+##}
+##rm(x.B.Correct)
+##
+##cat("Exploring model B (B.Time)")
+##normality.chart.var(data$B.Time,"B.Time")
+##for(n in unique(data$iv.B.model))
+##{
+##  x.B.Time  <- data$B.Correct[data$iv.B.model == n]
+##  normality.chart.var(x.B.Time,paste0("B.Time[",as.character(n),"]"))
+##}
+##rm(x.B.Time)
+##
+##cat("Exploring model B (B.Efficacy)")
+##normality.chart.var(data$B.Efficacy,"B.Efficacy")
+##for(n in unique(data$iv.B.model))
+##{
+##  x.B.Efficacy <- data$B.Efficacy[data$iv.B.model == n]
+##  normality.chart.var(x.B.Efficacy,paste0("B.Efficacy[",as.character(n),"]"))
+##}
+##rm(x.B.Efficacy)
+##
+##cat("Exploring model B (B.Efficiency)")
+##normality.chart.var(data$B.Efficiency,"B.Efficiency")
+##for(n in unique(data$iv.B.model))
+##{
+##  x.B.Efficiency <- data$B.Efficiency[data$iv.B.model == n]
+##  normality.chart.var(x.B.Efficiency,paste0("B.Efficiency[",as.character(n),"]"))
+##}
+##rm(x.B.Efficiency)
+##
+@
+
+Let see what happens when combining variables:
+
+<<explore2-test, echo = FALSE, results="asis">>=
+### Let see what happens with combined metrics
+# but first let make space
+for (i in a.names)
+{
+  data[[i]] <- NA
+}
+for (i in b.names)
+{
+  data[[i]] <- NA
+}
+
+## Combinations without repetition:
+data$iv.A.CC.CL        <- data$iv.A.CC + data$iv.A.CL
+data$iv.A.CC.CS        <- data$iv.A.CC + data$iv.A.CS
+data$iv.A.CC.CAS       <- data$iv.A.CC + data$iv.A.CAS
+data$iv.A.CL.CS        <- data$iv.A.CL + data$iv.A.CS
+data$iv.A.CL.CAS       <- data$iv.A.CL + data$iv.A.CAS
+data$iv.A.CS.CAS       <- data$iv.A.CS + data$iv.A.CAS
+data$iv.A.CC.CL.CS     <- data$iv.A.CC.CL + data$iv.A.CS
+data$iv.A.CC.CS.CAS    <- data$iv.A.CC.CS + data$iv.A.CAS
+data$iv.A.CC.CAS.CL    <- data$iv.A.CC.CAS + data$iv.A.CL
+data$iv.A.CL.CS.CAS    <- data$iv.A.CL.CS + data$iv.A.CAS
+data$iv.A.CC.CL.CS.CAS <- data$iv.A.CC.CL.CS + data$iv.A.CAS
+
+data$iv.B.CC.CL        <- data$iv.B.CC + data$iv.B.CL
+data$iv.B.CC.CS        <- data$iv.B.CC + data$iv.B.CS
+data$iv.B.CC.CAS       <- data$iv.B.CC + data$iv.B.CAS
+data$iv.B.CL.CS        <- data$iv.B.CL + data$iv.B.CS
+data$iv.B.CL.CAS       <- data$iv.B.CL + data$iv.B.CAS
+data$iv.B.CS.CAS       <- data$iv.B.CS + data$iv.B.CAS
+data$iv.B.CC.CL.CS     <- data$iv.B.CC.CL + data$iv.B.CS
+data$iv.B.CC.CS.CAS    <- data$iv.B.CC.CS + data$iv.B.CAS
+data$iv.B.CC.CAS.CL    <- data$iv.B.CC.CAS + data$iv.B.CL
+data$iv.B.CL.CS.CAS    <- data$iv.B.CL.CS + data$iv.B.CAS
+data$iv.B.CC.CL.CS.CAS <- data$iv.B.CC.CL.CS + data$iv.B.CAS
+
+a.names <- c("iv.A.CC.CL", "iv.A.CC.CS", "iv.A.CC.CAS", "iv.A.CL.CS", "iv.A.CL.CAS", "iv.A.CS.CAS", "iv.A.CC.CL.CS", "iv.A.CC.CS.CAS", "iv.A.CC.CAS.CL", "iv.A.CL.CS.CAS", "iv.A.CC.CL.CS.CAS")
+
+b.names <- c("iv.B.CC.CL", "iv.B.CC.CS", "iv.B.CC.CAS", "iv.B.CL.CS", "iv.B.CL.CAS", "iv.B.CS.CAS", "iv.B.CC.CL.CS", "iv.B.CC.CS.CAS", "iv.B.CC.CAS.CL", "iv.B.CL.CS.CAS", "iv.B.CC.CL.CS.CAS")
+
+
+dsr <- descriptive.stats.ratio(data, c(a.names, b.names))
+print(xtable(dsr, caption = "Descriptive statistics for combined variables\\label{table:XXRatioDescrStats}",
+      digits = c(0,0,0,3,3,3,3,3)))
+
+# Remove "iv.A.CS.CAS" and "iv.B.CS.CAS", because they are constant at 90
+a.names <- c("iv.A.CC.CL", "iv.A.CC.CS", "iv.A.CC.CAS", "iv.A.CL.CS", "iv.A.CL.CAS", "iv.A.CC.CL.CS", "iv.A.CC.CS.CAS", "iv.A.CC.CAS.CL", "iv.A.CL.CS.CAS", "iv.A.CC.CL.CS.CAS")
+
+b.names <- c("iv.B.CC.CL", "iv.B.CC.CS", "iv.B.CC.CAS", "iv.B.CL.CS", "iv.B.CL.CAS", "iv.B.CC.CL.CS", "iv.B.CC.CS.CAS", "iv.B.CC.CAS.CL", "iv.B.CL.CS.CAS", "iv.B.CC.CL.CS.CAS")
+
+
+cat("Model comprehension correlations:")
+tst <- mk.correlation(data,c("A.Correct","A.Time","A.Efficacy","A.Efficiency"), 
+                      a.names)
+print(xtable(t(tst), caption = "Correlation for models A against independent variables\\label{table:XAcorreComprehen}", align=c("r","r","r","r","r")), include.rownames = TRUE)
+
+tst <- mk.correlation(data,c("B.Correct","B.Time","B.Efficacy","B.Efficiency"), 
+                      b.names)
+print(xtable(t(tst), caption = "Correlation for models B against independent variables\\label{table:XBcorreComprehen}"), align=c("r","r","r","r","r"), include.rownames = TRUE)
+
+cat("Perceived complexity correlations:")
+tst <- mk.correlation(data,c("A.perceived"), a.names)
+print(xtable(t(tst), caption = "Correlation for models A against independent variables\\label{table:XAcorrePerceived}", align=c("r","r")), include.rownames = TRUE)
+tst <- mk.correlation(data,c("B.perceived"), b.names)
+print(xtable(t(tst), caption = "Correlation for models B against independent variables\\label{table:XBcorrePerceived}", align=c("r","r")), include.rownames = TRUE)
+
+rm(tst)
+@
+
+\end{document}

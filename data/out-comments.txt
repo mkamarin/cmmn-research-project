@@ -1,0 +1,146 @@
+"x"
+"
+COMMENT:
+ nice tutorial, looking forward to the research outcomes. 
+best regards 
+END"
+"
+COMMENT:
+ The models presented did not contain all necessary information to unambiguously answer the questions. 
+
+In one case an entry sentry expression that was not visible but may have been present might have changed the outcome of a question, in another case the standard event of an on-part could have had an impact on the outcome. 
+END"
+"
+COMMENT:
+ The examples gave glimpses of some Stages without having any entry point or any dotted connection, to show the connection to the parent stage. I hope that this is just for illustration. Or maybe my understanding is wrong. In a real world, are there instances, where stages are there without any entry point or any dotted connection? 
+END"
+"
+COMMENT:
+ The tutorial could be shortened. It also needs a refreshment at the end to make sure the person remembers all the symbols, just a small test that let the participant know which ones were wrong.  
+END"
+"
+COMMENT:
+ n/A 
+END"
+"
+COMMENT:
+ The reason why I found the planning table icons (expanded and collapsed) difficult is that they seemed cluttered. I would have preferred that the +/- part take up more icon real estate.
+
+As for the ""expanded decorator"", I am not sure it was covered in the tutorial, which made it hard for me to understand. 
+END"
+"
+COMMENT:
+ as with BPMN, the std misses the opportunity to clarify the data dimension. to some extent that may be dealt with through integration with DMN, but it's all a bit disjoint IMNSHO 
+END"
+"
+COMMENT:
+ Loved where you've taken this. It is much easier to understand now and functional. 
+END"
+"
+COMMENT:
+ It was moderately difficult to understand without prior
+experience with CMMN. 
+END"
+"
+COMMENT:
+ Good luck!! 
+END"
+"
+COMMENT:
+ Since I'm not overly familiar with the notation being used, it would have been helpful to see a legend describing the notations being used. 
+
+The concepts seemed very straightforward, but remembering what each shape and notation means is not easy for me.
+
+I really liked the tutorial, very useful!  
+END"
+"
+COMMENT:
+ While the individual symbols used in CMMN are universally easy to understand - the models as a whole are a difficult to be sure of given the limited time to assimilate the tutorial.
+I'm not convinced that the questions around the two model styles necessarily convey much more than the respondent's short term memory (as opposed to a true understanding of the models).  Maybe that's the point ? 
+END"
+"
+COMMENT:
+ The tutorial was thorough, and while both diagrams were somewhat tricky I feel as though I was quickly taught the basics of CMMN. 
+END"
+"
+COMMENT:
+ 1. Be helpful to have a link back to tutorial from survey to check on info. 
+
+2. On the 3rd question, compare the 2 plans, since the screen is small to show the 2 plans side by side, be helpful to have a link back to the previous pages to look at the 2 plans in detail. 
+
+3. The tutorial is great to get an overall understanding of CMMN notation in a short amount of time. Thank you.  
+END"
+"
+COMMENT:
+ A video of this can be more easier to understand . As we tend to glimse through the text and end up with difficulty to answer questions 
+END"
+"
+COMMENT:
+ Just some thoughts that crept in while going thru the tutorial..
+
+- I was little confused among the human and hand icons for the tasks. Probably, some more intuitive icons?
+
+- I can't remember correctly, but got a feeling that the concept of filled-in square icon could have been used the other way round.. i.e. to denote the other option.
+
+
+
+All the Best for your Research..!!  
+END"
+"
+COMMENT:
+ You may have more charity listed for choose, there are only three for us by now. 
+END"
+"
+COMMENT:
+ One of the screens in the survey gave a list of CMMN symbols and asked us which symbols are easier or more difficult to understand. I was uncomfortable giving an answer to this question because I find that the difficulty of understanding CMMN models is not understanding the individual symbols, but their composition. The fact that there are no spatial conventions for laying out symbols in BPMN makes it particularly difficult to understand, e.g. the spatial relation betweens two tasks A and B such that A can complete before B (but not the opposite) can be anything. In BPMN for example the flow relation gives a way of understanding what comes before what and the usual convention is right-to-left, which makes it easier to understand temporal relations.
+Understanding what is required for a case to complete is also not trivial in CMMN - it does require careful inspection of the model.
+ 
+END"
+"
+COMMENT:
+ very interesting exercise - thanks and good luck! 
+END"
+"
+COMMENT:
+ Thank you ! I think it will be easier to understand with a little more of practice in the tutorial.
+Good luck,
+
+Ana 
+END"
+"
+COMMENT:
+ This is very interesting research.  I was not aware of CMMN. I have relevant experience with the UML (up to version 2.0) and read superficially BPMN models.
+
+There are some minor typos or grammar errors in your survey.  For example, ""wiliness"" above (should be ""willingness"").
+
+Best wishes for your research.  I hope the final results will be published in some form of open access journal or repository.
+
+Kind regards. 
+END"
+"
+COMMENT:
+ The research is very meaningful. 
+END"
+"
+COMMENT:
+ the tutorial was good but there was no learning confirmation at the end of it.  By the time the questions were being asked there was no ability to know if you'd remembered the information correctly 
+END"
+"
+COMMENT:
+ Finally i had opportunity to model with CMMN, quite difficult and hard to understand from business person perspective. Due to always busy nature and way of thinking it would hard to convince business person to learn such notation. 
+END"
+"
+COMMENT:
+ Relatively simple concepts/notation. But are they powerful enough to justify a more specialized notation?
+The quality of a graphical tool would influence a lot the acceptance of this notation  
+END"
+"
+COMMENT:
+ The small tutorial was a very useful tool to assess high-level basic knowledge for the survey; however, high managers/coordinators would not participate if no explicitly purpose or benefits are listed as part of this knowledge (it felt theory-based but not for actual implementation).
+
+Also, there is a need to prepare a survey/excercise for high-level management and decision makers; they are part of the key success criteria for CMMN and BMMN project implementations, and involving them will give mayor insights regarding williness to adopt this methodology. 
+END"
+"
+COMMENT:
+ While the modeling language may be difficult to understand, an exercise that attempts to map the model into a 'real' user experience that allows for more navigation and help in understanding the concepts could work well. 
+END"

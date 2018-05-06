@@ -1,0 +1,68 @@
+%% Run with all2.dzn and "solve minimize CC;" Result the minimun achievable CC with original constraints and min/max.
+
+Basic Symbols
+CS_SC=1	 	Number of cases
+CS_SS=0	 	Number of stages
+CS_SDS=0	 Number of discretionary stages
+CS_SPF=0	 Number of plan fragments
+CS_DI=0	 	Number of case file items
+CS_PT=30	 Number of tasks
+CS_PDT=1	 Number of discretionary tasks
+PE=0	 	Event listener elements
+PE2MHB=0	 User event listener element
+PE2MT=0	 	Timer event listener element
+CS_PM=0	 	Number of milestones
+DCP_S=0	 	Stage collapsed planning table
+DEP_S=1	 	Stage expanded planning table
+DCP_H=0	 	Human task collapsed planning table
+DEP_H=0	 	Human task expanded planning table
+CAS_DAC=0	 Number of auto complete decorators
+CAS_DC=0	 Number of collapsed decorators
+CAS_DE=0	 Number of expanded decorators
+CAS_DMA=0	 Number of manual activation decorators
+CAS_DRN=0	 Number of repetition decorators
+CAS_DR=0	 Number of required decorators
+SE2OC=8	 	Entry criterion with associated connector
+SE=0	 	Entry criterion without a connector
+SX2OC=0	 	Exit criterion with associated connector
+SX=0	 	Exit criterion without a connector
+CAS_MH=0	 Number of non-blocking human markers
+CAS_MP=31	 Number of process markers
+MC_O=0	 C	ase marker (case not in this model)
+MC_I=0	 	Case marker (with  case in this model)
+PT2MHB_PDT2MHB=0	 Blocking human marker
+OC=10	 	Extra connector (sentry) element
+Metrics:
+CC=43
+CL=0
+CS=50
+CAS=40
+CTS=90
+Sub-Metrics:
+CS_SC=1
+CS_SS=0
+CS_SDS=0
+CS_SPF=0
+CS_DI=0
+CS_PT=30
+CS_PDT=1
+CS_PE=0
+CS_PM=0
+CS_OC=18
+CAS_DCP=0
+CAS_DEP=1
+CAS_DAC=0
+CAS_DC=0
+CAS_DE=0
+CAS_DMA=0
+CAS_DRN=0
+CAS_DR=0
+CAS_SE=8
+CAS_SX=0
+CAS_MH=0
+CAS_MP=31
+CAS_MC=0
+CAS_MHB=0
+CAS_MT=0
+End.
+----------

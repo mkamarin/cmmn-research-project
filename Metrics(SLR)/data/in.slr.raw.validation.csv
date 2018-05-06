@@ -1,0 +1,74 @@
+Experiment id,Experiment Author,Experiment,Type,Design,Hypothesis,Threats,Research,Power ,Normality.test,iv.id,Subjects,Models,Clear.Findings,Control.group,Instruments,Shows.statistics,Analysis,Sampling,Subject.type,Experiment dsg,Secondary.data,Concept ,Statistics,Comments,iv,dv
+107,Lassen2009,1,M,0.5,0,0,R,0,0,0,0,262,1,N,0,y,,Cx,Sm,N,U,,correlation,,,
+200,Cardoso2006a,1,Hw,1,1,3,R,0,1,1,19,22,1,N,0,y,,Cx,S,Wx,N,control-flow complexity,Spearman correlation,"flawed statistical analysis (same experiment as in Cardoso2008 --id 109), (same theoretical validation as in Cardoso2005cont --id 1480)",,
+116,Garcia2004defi,3,Hw,1,1,4,R,0,1,1,29,18,1,G,1,S,,C,P,W,N,"understandability, modifiability",Spearman correlation,,structural complexity,time (understandabilityand modifiability)
+117,Garcia2004,4,Hw,1,1,4,R,0,1,1,86,10,1,G,1,S,,C,S,W,N,"understandability, modifiability",Spearman correlation,,structural complexity,time (understandabilityand modifiability)
+135,Kluza2014squa,1,CM,0,0,0,R,0,0,0,0,10,0,N,0,p,,N,Mx,N,U,,Kendall tau rank and Spearman correlations,,,
+167,Fu2010,1,T,,,,,,,,,,,,,,,,,,,,,,,
+148,Solichah2013expl,1,CS,0.5,0,0,R,0,0,0,0,4,1,U,0,N,,Cx,Mr,N,N,Complexity,histograms,compares 3 metrics against 3 software metrics,,
+174,Muketha2010,1,T,,,,,,,,,,,,,,,,,,,,,,,
+179,Han2009eval,1,T,,,,,,,,,,,,,,,,,,,,,Provides theoretical validation for Gruhn2006adop,,
+178,Khoshkbar2009amet,1,E,0.5,0,0,E,0,0,0,3,20,0,N,0,X,,Cx,E,N,N,,none,5 expert agree with metric versus 3 experts disagree,,
+195,Mendling2007a,1,S,1,0.5,0,R,0,0,0,0,604,1,N,0,y,,Cx,Mr,N,N,,logistic regression (logit),No much information on the experiment is given,,
+1470,Latva2001,1,CS,0.5,0,0,R,0,0,0,0,6,0,N,0,X,,Cx,Ma,N,N,"Validity, Reliability, Computability, etc.)",none,,,
+1480,Cardoso2005cont,1,T,,,,,,,,,,,,,,,,,,,,,,,
+1475,Vanderfeesten2008a,1,H,0.5,0,0,R,0,0,0,73,12,1,N,0,N,,Cx,S,N,U,understandability,Spearman correlation,Use secundary data from \cite{Mendling2007d},,
+1475,Vanderfeesten2008a,2,S,0.5,1,0,R,0,0,1,0,604,1,N,0,y,,Cx,Mr,N,Y,,"Spearman correlation, logistic regression",Accepts the null hypothesis (weird because you never do that),,
+1546,Huan2014stud,1,T,,,,,,,,,,,,,,,,,,,,,,,
+1485,Rolon2009anal,1,Hw,1,1,0,R,0,1,1,109,10,1,G,0,N,,Cx,S,W,Y,,Spearman correlation,"does not shows the statistics. did not hold true in all experiments, but in general it measure understandabiliy and modifiability",CFC,"answer times, correct answers, subjective evaluation and efficiency"
+1546,Huan2014stud,1,CM,0,0,0,R,0,0,0,0,2,1,N,1,X,,X,Ma,N,N,,none,,,
+1568,Borgert2009acom,1,M,0,0,0,R,0,0,0,0,6,0,N,0,N,,X,Mx,N,N,,correlation between the metrics,,,
+1585,Coskun2014phd,1,T,,,,,,,,,,,,,,,,,,,,,"used both Weyuker and Brian, plus \cite{Kaner2004soft}",,
+1571,Maesalu2011comp,1,H,0.5,1,2,R,0,0,0,16,8,1,Y,1,S,,Cx,S,N,N,"Perceived difficulty (but main experimrnt Hipothesis are about restructured models -- equivalent to unstructured, and easy to comprehend)",pearson correlation,"(subjects originally 18  -- 9 in control, 9 experimental group, but two did not completed the experiment)","Size, CC, ACD, Density",
+1584,Mendling2006a,1,S,1,1,0,R,0,0,1,0,604,1,N,0,y,,Cx,Mr,N,N,,logistic regression (logit),A set of variables can predict 95\% of the errors/ but CFC cannot predict the errors,the 15 metrics,hasError
+1585,Coskun2014phd,1,CM,0.5,0,0,R,0,0,0,0,12,0,N,1,X,,Cx,Ma,N,Y,,none,,,
+1586,Reijers2004,1,I,0,0,0,R,0,0,0,0,3,0,N,1,X,,X,Ma,N,N,cohesion/coupling,none,uses intuition to decide which model is better,,
+1587,Mendling2007,1,S,1,1,0,R,0,1,1,0,2003,1,N,0,S,,Cx,Mr,N,N,,"ANOVA, Pearson, Spearman,Logit",reported again in Mendling2008 (id 5573),,
+31485,Antonini2011soft,1,T,,,,,,,,,,,,,,,,,,,,,"Validation based on \citet{Morasca1999meas,Morasca2008refi}",,
+31486,Held2009stru,1,T,,,,,,,,,,,,,,,,,,,,,,,
+1588,Mendling2006,1,S,1,0.5,0,R,0,0,1,0,604,1,N,0,y,,Cx,Mr,N,N,,logistic regression (logit),,"number of nodes, number of arcs, density ($d_e$)",hasError
+31483,Sanchez2010pred,1,H,0.5,1,0,R,0,1,0.5,71,15,0.5,N,1,p,,Cx,S,N,Y,,correlation y regression,validated metrics from Mendling2007 (reusing data),metrics,"understandability time, modifiability time, number of correct answers in understandability or modifiability, and efficiency"
+31489,Mendling2007d,1,H,0.5,1,1,R,0,1,0.5,73,12,1,N,0,S,,Cx,S,N,N,understandability,,,,
+31491,Rolon2007anex,11,Hw,1,1,2,R,0,1,1,27,10,1,G,1,p,,Cx,S,W,N,,Spearman correlation,,61 metrics,time (understandabilityand modifiability)
+31492,Rolon2008,12,Hw,1,1,0,R,0,1,1,31,10,1,G,1,N,,Cx,S,W,N,,Spearman correlation,,,time (understandabilityand modifiability)
+32490,Daneva1996benc,1,E,0,0,1,R,0,0,0,-1,11,0,N,0,X,,N,E,N,N,control structures,none,no conclusion about validated metrics (further research is planned),,
+32490,Daneva1996benc,2,CS,0,0,1,R,0,0,0,0,2,0,N,1,N,,Cx,Mr,N,N,control structures,histograms,no conclusion about validated metrics (further research is planned),,
+46440,Rolon2009pred,21,Hw,1,1,0,R,0,1,1,22,15,1,G,1,y,,Cx,S,W,N,,correlation and regression,"presents the second family of experiment, the first family of experiments were presented in Rolon2008.",29 metrics,"Answer Times, Correct Answers and Efficiency"
+47442,Mendling2008a,1,HS,0.5,1,0,R,0,0,0.5,42,12,1,N,0,y,,Cx,A,N,N,Comprehension (it uses understandability and comprehension interchangable),Sepearman correlation,"main goal wasnot try to validate the metrics, but labels or not labels in the model",,
+47444,Garcia2004fmes,51,Hw,1,1,4,R,0,1,1,26,10,1,G,1,S,,C,S,W,N,"understandability, modifiability",Spearman correlation,experiment 5 (two replicas -- this 51 is replica 1),structural complexity,time (understandabilityand modifiability)
+47444,Garcia2004fmes,52,Hw,1,1,4,R,0,1,1,38,10,1,G,1,S,,C,S,W,N,"understandability, modifiability",Spearman correlation,experiment 5 (two replicas. This 52 is replica 2),structural complexity,time (understandabilityand modifiability)
+56410,Garcia2004prop,1,Hw,1,1,4,R,0,1,1,20,18,1,O,0,S,,C,U,W,N,structural complexity,Spearman correlation,,structural complexity,
+56410,Garcia2004prop,2,Hw,1,1,4,R,0,1,1,25,18,1,O,0,S,,C,U,W,N,structural complexity,Spearman correlation,replica of first,structural complexity,
+1485,Rolon2009anal,2,Hw,1,1,0,R,0,1,1,115,15,1,G,0,N,,Cx,S,W,Y,,Spearman correlation,"does not shows the statistics. did not hold true in all experiments, but in general it measure understandabiliy and modifiability",CFC,"answer times, correct answers, subjective evaluation and efficiency"
+31492,Rolon2008,13,Hw,1,1,0,R,0,1,1,37,10,1,G,1,N,,Cx,S,W,N,,Spearman correlation,,,time (understandabilityand modifiability)
+31492,Rolon2008,14,Hw,1,1,0,R,0,1,1,6,10,1,G,1,N,,Cx,P,W,N,,Spearman correlation,,,time (understandabilityand modifiability)
+31492,Rolon2008,15,Hw,1,1,0,R,0,1,1,8,10,1,G,1,N,,Cx,S,W,N,,Spearman correlation,,,time (understandabilityand modifiability)
+46440,Rolon2009pred,22,Hw,1,1,0,R,0,1,1,40,15,1,G,1,y,,Cx,S,W,N,,correlation and regression,"presents the second family of experiment, the first family of experiments were presented in Rolon2008.",29 metrics,"Answer Times, Correct Answers and Efficiency"
+46440,Rolon2009pred,23,Hw,1,1,0,R,0,1,1,9,15,1,G,1,y,,Cx,S,W,N,,correlation and regression,"presents the second family of experiment, the first family of experiments were presented in Rolon2008.",29 metrics,"Answer Times, Correct Answers and Efficiency"
+46440,Rolon2009pred,24,Hw,1,1,0,R,0,1,1,29,12,1,G,1,y,,Cx,S,W,N,,correlation and regression,"presents the second family of experiment, the first family of experiments were presented in Rolon2008.",29 metrics,"Answer Times, Correct Answers and Efficiency"
+46440,Rolon2009pred,25,Hw,1,1,0,R,0,1,1,15,12,1,G,1,y,,Cx,S,W,N,,correlation and regression,"presents the second family of experiment, the first family of experiments were presented in Rolon2008.",29 metrics,"Answer Times, Correct Answers and Efficiency"
+26492,Mao2010cont,1,I,0,0,0,R,0,0,0,0,2,0.5,N,1,X,,N,Mr,N,N,complexity,none,intuition,,
+174,Muketha2010,1,I,0,0,0,R,0,0,0,0,3,0.5,N,1,X,,X,Ma,N,N,complexity,none,intuition,,
+31483,Sanchez2010pred,2,H,0.5,1,0,R,0,1,0.5,56,12,0.5,N,1,p,,Cx,S,N,Y,,correlation y regression,validated metrics from Mendling2007 (reusing data),metrics,"understandability time, modifiability time, number of correct answers in understandability or modifiability, and efficiency"
+31475,Vanderfeesten2008eval,1,I,0,0.5,0,E,0,0,0,0,3,0,N,0,X,,N,Mr,N,N,easy to understand,none,,,
+1563,Kluza2015meas,1,CM,0,0,0,R,0,0,0,0,3,0,N,0,X,,Cx,Ma,N,N,,none,,,
+19518,Rolon2006,1,T,,,,,,,,,,,,,,,,,,,,,theoretical validation in Rolon PhD (\cite{Rolon2009phd} -- which is in spanish),,
+1529,Sobrinho1999comp,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+38469,Tjaden1999busi,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+55413,Garcia2003inte,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+1491,Cardoso2005,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+111,Cardoso2006b,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+205,Gruhn2006adop,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+201,Gruhn2006comp,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+19518,Rolon2006,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+198,Cardoso2007,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+1473,Cardoso2007busi,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+1487,Vanderfeesten2007a,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+1544,Cheng2008comp,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+168,Abreu2010defi,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+45443,Kreimeyer2010astr,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+170,Mao2010comp,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+101,LaRosa2011mana,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+151,Kluza2012,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+150,Setiawan2013inte,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,
+681,Lubke2015usin,0,N,,,,,,,,,,,,,,,,,,,,,no validation in this paper,,

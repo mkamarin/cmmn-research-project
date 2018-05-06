@@ -1,0 +1,290 @@
+id,Author,Year,Delete metric,Metric,Note,Note.two,Name,Label,Notation,Validation.obsolete,By.id.obsolete,By.Author.obsolete,Experiment.obsolete,Subjects.obsolete,Models.obsolete,Concept.obsolete,Statistics test used.obsolete,Result.obsolete,Category,Cluster.reason,Applicable to CMMN,Reason
+32490,Daneva1996benc,1996,,\texttt{ACC},,,average connector cohesion,AverageConnectorCohesion,EPC,Sx,32490,Daneva1996benc,,,,,histograms,,Average,,No,Uses connectors
+32490,Daneva1996benc,1996,,\texttt{AEC},,,average event cohesion,AverageEventCohesion,EPC,Sx,32490,Daneva1996benc,,,,,histograms,,Average,,No,Uses connectors
+32490,Daneva1996benc,1996,,\texttt{AFC},,,average function cohesion,AverageFunctionCohesion,EPC,Sx,32490,Daneva1996benc,,,,,histograms,,Average,,No,Uses connectors
+1529,Sobrinho1999comp,1999,,\texttt{EM},,,extended measure,ExtendedMeasure,VPML,N,1529,Sobrinho1999comp,,,,,Was-never-validated,,Average,,No,Graph based
+1529,Sobrinho1999comp,1999,,\texttt{GREM},,,global ripple effect measure,GlobalRippleEffectMeasure,VPML,N,1529,Sobrinho1999comp,,,,,Was-never-validated,,Ratio,,No,Graph based
+1529,Sobrinho1999comp,1999,,\texttt{MM},,,modularization measure,ModularizationMeasure,VPML,N,1529,Sobrinho1999comp,,,,,Was-never-validated,,Ratio,,No,Graph based
+38469,Tjaden1999busi,1999,,\bar{\texttt{C}}_A ,,,average activity complexity,AverageActivityComplexity,Graph,N,38469,Tjaden1999busi,,,,,Was-never-validated,,Average,,No,Uses material flow
+38469,Tjaden1999busi,1999,,\texttt{Flexibility},,,flexibility,Flexibility,Graph,N,38469,Tjaden1999busi,,,,,Was-never-validated,,Percentage,,No,Uses material flow
+38469,Tjaden1999busi,1999,,\texttt{Integration},,,integration,Integration,Graph,N,38469,Tjaden1999busi,,,,,Was-never-validated,,Percentage,,No,Graph based
+38469,Tjaden1999busi,1999,,\texttt{Simplicity},,,simplicity,Simplicity,Graph,N,38469,Tjaden1999busi,,,,,Was-never-validated,,Percentage,,No,Uses material flow
+1470,Latva2001,2001,,\texttt{CNC}_K,,,coefficient of network complexity (Kaimann),CoefficientOfNetworkComplexityKaimann,Graph,Sx,1470,Latva2001,,,,,none,,Calculated,,No,Graph based
+1470,Latva2001,2001,,\texttt{CNC}_P,,,coefficient of network complexity (Pascoe),CoefficientOfNetworkComplexityPascoe,Graph,Sx,1470,Latva2001,,,,,none,,Ratio,,No,Graph based
+1470,Latva2001,2001,,\texttt{CI},,,complexity index,ComplexityIndex,Graph,Sx,1470,Latva2001,,,,,none,,Algorithm,,No,Graph based
+1470,Latva2001,2001,,\texttt{S},,,cyclomatic number,CyclomaticNumber,Graph,Sx,1470,Latva2001,,,,,none,,Calculated,,No,Graph based
+1470,Latva2001,2001,,\texttt{T},,,number of trees in a graph,NumberOfTreesInAGraph,Graph,Sx,1470,Latva2001,,,,,none,,Counter,,No,Graph based
+1470,Latva2001,2001,,\texttt{RT},,,restrictiveness estimator,RestrictivenessEstimator,Graph,Sx,1470,Latva2001,,,,,none,,Calculated,,No,Graph based
+1488,Reijers2003a,2003,Dx,\texttt{c}_a(t),,,activity cohesion,ActivityCohesion,Graph,THx,1488,Reijers2003a,,,,,Was-never-validated,,,,,
+1488,Reijers2003a,2003,Dx,\mu(t),,,activity information cohesion,ActivityInformationCohesion,Graph,THx,1488,Reijers2003a,,,,,Was-never-validated,,,,,
+1488,Reijers2003a,2003,Dx,\lambda(t),,,activity relation cohesion,ActivityRelationCohesion,Graph,THx,1488,Reijers2003a,,,,,Was-never-validated,,,,,
+55413,Garcia2003inte,2003,,\texttt{CA},,,activity coupling,ActivityCoupling,SPEM,N,55413,Garcia2003inte,,,,,,,Ratio,,No,Graph based
+55413,Garcia2003inte,2003,,\texttt{NA},,,number of activities,NumberOfActivities,SPEM,N,55413,Garcia2003inte,,,,,,,Counter,Task count,Yes,Count tasks
+55413,Garcia2003inte,2003,,\texttt{NDRA},,,number of precedence dependences between activities,NumberOfPrecedenceDependencesBActivities,SPEM,N,55413,Garcia2003inte,,,,,,,Counter,,No,Graph based
+55413,Garcia2003inte,2003,,\texttt{NPR},,,number of roles,NumberOfRoles,SPEM,N,55413,Garcia2003inte,,,,,,,Counter,,No,not explicit in \glCMMN models
+55413,Garcia2003inte,2003,,\texttt{NSTP},,,number of steps (tasks),NumberOfSteps,SPEM,N,55413,Garcia2003inte,,,,,Was-never-validated,,Counter,,No,Concept not in \glCMMN
+55413,Garcia2003inte,2003,,\texttt{NWP},,,number of work products,NumberOfWorkProducts,SPEM,N,55413,Garcia2003inte,,,,,,,Counter,,No,Concept not in \glCMMN
+55413,Garcia2003inte,2003,,\texttt{RSTPA},,,ratio of steps and activities,RatioBetweenStepsAndActivities,SPEM,N,55413,Garcia2003inte,,,,,Was-never-validated,,Ratio,,No,Concept not in \glCMMN
+55413,Garcia2003inte,2003,,\texttt{RPRA},,,ratio of process roles and activities,RatioOfProcessRolesAndActivities,SPEM,N,55413,Garcia2003inte,,,,,,,Ratio,,No,not explicit in \glCMMN models
+55413,Garcia2003inte,2003,,\texttt{RWPA},,,ratio of work products and activities,RatioOfWorkProductsAndActivities,SPEM,N,55413,Garcia2003inte,,,,,,,Ratio,,No,not explicit in \glCMMN models
+117,Garcia2004,2004,,\texttt{NDWP},,,number of dependences,NumberOfDependences,SPEM,H,117,Garcia2004,,,,,within-subject design. Spearman's correlation,,Counter,,No,Uses grapg arcs
+117,Garcia2004,2004,,\texttt{NDWPIn},,,number of input dependences,NumberOfInputDependences,SPEM,H,117,Garcia2004,,,,,within-subject design. Spearman's correlation,,Counter,,No,Uses grapg arcs
+117,Garcia2004,2004,,\texttt{NDWPOut},,,number of output dependences,NumberOfOutputDependences,SPEM,H,117,Garcia2004,,,,,within-subject design. Spearman's correlation,,Counter,,No,Uses grapg arcs
+117,Garcia2004,2004,,\texttt{RDWPIn},,,ratio between input dependencies and number of dependencies,RatioBetweenInDependenciesXDependencies,SPEM,H,117,Garcia2004,,,,,within-subject design. Spearman's correlation,,Ratio,,No,Uses grapg arcs
+117,Garcia2004,2004,,\texttt{RDWPOut},,,ratio between output dependencies and the number of dependencies,RatioBetweenOutDependenciesXDependencies,SPEM,H,117,Garcia2004,,,,,within-subject design. Spearman's correlation,,Ratio,,No,Uses grapg arcs
+1586,Reijers2004,2004,,\texttt{c},,,process cohesion,ProcessCohesion,Graph,I,1586,Reijers2004,,,,,none,,Calculated,,No,Uses grapg arcs
+1586,Reijers2004,2004,,\texttt{k},,,process coupling,ProcessCoupling,Graph,I,1586,Reijers2004,,,,,none,,Calculated,,No,Uses grapg arcs
+1586,Reijers2004,2004,,\rho,,,process coupling/cohesion ratio,ProcessCouplingCohesionRatio,Graph,I,1586,Reijers2004,,,,,none,,Ratio,,No,Uses grapg arcs
+1480,Cardoso2005cont,2005,Dup,\texttt{AC},,,activity complexity\cite{Garcia2003inte},ActivityComplexity,Graph,T,1480,Cardoso2005cont,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+1480,Cardoso2005cont,2005,,\texttt{CFC},,,control-flow complexity,ControlflowComplexity,Graph,T,1480,Cardoso2005cont,,,,,none,,Calculated,,No,"Uses splits, joins"
+1491,Cardoso2005,2005,D,\texttt{IC},,second set of ,interface complexity,InterfaceComplexity,BPEL,N,1491,Cardoso2005,,,,,Was-never-validated,,,,,
+111,Cardoso2006b,2006,Dup,\texttt{CNC},,,coefficient of network complexity\cite{Latva2001},CoefficientOfNetworkComplexity,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Ratio,,No,Graph based
+111,Cardoso2006b,2006,D,\texttt{IC},,,interface complexity\cite{Cardoso2005},InterfaceComplexityX,BPEL,N,111,Cardoso2006b,,,,,Was-never-validated,,,,,
+111,Cardoso2006b,2006,Dup,\texttt{MCC},,,McCabe's cyclomatic number\cite{Latva2001},McCabeCyclomaticNumberCardoso,Graph,N,111,Cardoso2006b,,,,,none,,Calculated,,No,requires arcs
+111,Cardoso2006b,2006,,\texttt{NOAC},,,number of activities and control flow elements,NumberOfActivitiesAndControl,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Counter,,No,requires well structured graphs
+111,Cardoso2006b,2006,Dup,\texttt{NOA},,,number of activities\cite{Garcia2003inte},NumberOfActivitiesCardoso,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+111,Cardoso2006b,2006,,\texttt{NOAJS},,,number of activities joins and splits,NumberOfActivitiesJoinsAndSplits,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+111,Cardoso2006b,2006,,\texttt{D},,,process difficulty,ProcessDifficulty,Graph,N,111,Cardoso2006b,,,,,none,,Calculated,Halstead,Yes,Adapt Halstead's primitive measures
+111,Cardoso2006b,2006,,\texttt{N},,,process length,ProcessLength,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Calculated,Halstead,Yes,Adapt Halstead's primitive measures
+111,Cardoso2006b,2006,,\texttt{V},,,process volume,ProcessVolume,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Calculated,Halstead,Yes,Adapt Halstead's primitive measures
+111,Cardoso2006b,2006,Dup,\texttt{RT},,,restrictiveness estimator\cite{Latva2001},RestrictivenessEstimatorCardoso,Graph,N,111,Cardoso2006b,,,,,Was-never-validated,,Calculated,,No,Graph based
+201,Gruhn2006comp,2006,,\texttt{CW},\NoSymbolMetric,,cognitive weight,CognitiveWeight,Graph,N,201,Gruhn2006comp,,,,,Was-never-validated,,Weighted,Weights,Yes,Assign weight to elements and sum them
+201,Gruhn2006comp,2006,,\texttt{F}_i\texttt{F}_o,\NoSymbolMetric,,fan-in / fan-out,FanInFanOut,Graph,N,201,Gruhn2006comp,,,,,Was-never-validated,,Calculated,,No,Execution is not by calls
+201,Gruhn2006comp,2006,,\texttt{MaxND},\NoSymbolMetric,,maximum nesting depth,MaximumNestingDepth,EPC,N,201,Gruhn2006comp,,,,,Was-never-validated,,Counter,,No,graph based
+201,Gruhn2006comp,2006,,\texttt{MeanND},\NoSymbolMetric,,mean nesting depth,MeanNestingDepth,EPC,N,201,Gruhn2006comp,,,,,Was-never-validated,,Average,,No,graph based
+201,Gruhn2006comp,2006,Dup,\texttt{NA},\NoSymbolMetric,,number of activities\cite{Garcia2003inte},NumberOfActivitiesGruhn,SPEM,N,201,Gruhn2006comp,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+201,Gruhn2006comp,2006,,\texttt{NH},\NoSymbolMetric,,number of handles,NumberOfHandles,Workflow-Nets,N,201,Gruhn2006comp,,,,,Was-never-validated,,Counter,,No,uses arcs
+205,Gruhn2006adop,2006,Dup,\texttt{CC}_{\texttt{YAWL}},\NoSymbolMetric,second set of ,cognitive complexity for YAWL\cite{Gruhn2006comp},CognitiveComplexityForYAWL,YAWL,N,205,Gruhn2006adop,,,,,Was-never-validated,,Weighted,Weights,Yes,Assign weight to elements and sum them
+1479,Cardoso2006,2006,D,\texttt{K},,,Kolmogorov complexity,KolmogorovComplexity,Graph,N,1479,Cardoso2006,,,,,Was-never-validated,,,,,
+1479,Cardoso2006,2006,D,\texttt{H},,,shannon's entropy,ShannonEntropy,Graph,N,1479,Cardoso2006,,,,,Was-never-validated,,,,,
+1584,Mendling2006a,2006,,\texttt{Cycle},,,cycle,Cycle,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{JC},,,join complexity,JoinComplexity,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{JSR},,,join-split-ratio,JoinSplitRatio,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Ratio,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{AND}_j,,,number of AND joins,NumberOfANDJoins,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{AND}_s,,,number of AND splits,NumberOfANDSplits,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{A},,,number of arcs,NumberOfArcs,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,uses arcs
+1584,Mendling2006a,2006,Dup,\texttt{E}_{end},,,number of end events\cite{Rolon2006},NumberOfEndEventsMendling,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{F},,,number of functions,NumberOfFunctions,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{E}_{int},,,number of internal events,NumberOfInternalEvents,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{OR}_{j},,,number of OR joins,NumberOfORJoins,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{OR}_{s},,,number of OR splits,NumberOfORSplits,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,Dup,\texttt{E}_{start},,,number of start events\cite{Rolon2006},NumberOfStartEventsMendling,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{XOR}_{j},,,number of XOR joins,NumberOfXORJoins,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,,\texttt{XOR}_{s},,,number of XOR splits,NumberOfXORSplits,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Counter,,No,Concept does not exist in {\glCMMN}
+1584,Mendling2006a,2006,Dup,\texttt{SC},,,split complexity\cite{Cardoso2005cont},SplitComplexity,YAWL,S,1584,Mendling2006a,,,,,Logistic regression,,Calculated,,No,Concept does not exist in {\glCMMN}
+1588,Mendling2006,2006,,\texttt{d}_e,,second set of ,density of an EPC,DensityOfAnEPC,EPC,S,1588,Mendling2006,,,,, logistic regression (logit),,Calculated,,No,graph based so require arcs
+1588,Mendling2006,2006,,\texttt{d}_w,,second set of ,density of a workflow-net,DensityOfAWorkflownet,Workflow-Nets,S,1588,Mendling2006,,,,,Was-never-validated,,Calculated,,No,graph based so require arcs
+1588,Mendling2006,2006,,\texttt{d}_y,,second set of ,density of a YWAL model,DensityOfAYWALModel,YAWL,S,1588,Mendling2006,,,,,Was-never-validated,,Calculated,,No,graph based so require arcs
+19518,Rolon2006,2006,,\texttt{CLA},,,connectivity level between activities,ConnectivityLevelBetweenActivities,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{CLP},,,connectivity level between pools,ConnectivityLevelBetweenPools,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{TNA},,,total number of activities\cite{Garcia2003inte},NumberOfActivitiesRolon,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Task count,Yes,Count tasks
+19518,Rolon2006,2006,,\texttt{NCSA},,,number of collapsed ad-hoc sub-process,NumberOfCollapsedAdHocSubProcess,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NCSC},,,number of collapsed compensation sub-process,NumberOfCollapsedCompensationSubProcess,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NCSL},,,number of collapsed looping sub-process,NumberOfCollapsedLoopingSubProcess,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NCSMI},,,number of collapsed multiple instance sub-process,NumberOfCollapsedMultipleInstanceSubProcess,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NCS},,,number of collapsed sub-process,NumberOfCollapsedSubProcess,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Collapsed stages,Yes,Count collapsed stages
+19518,Rolon2006,2006,,\texttt{TNCS},,,total number of collapsed sub-processes,NumberOfCollapsedSubProcesses,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Collapsed stages,Yes,Count collapsed stages
+19518,Rolon2006,2006,,\texttt{NTC},,,number of compensation tasks,NumberOfCompensationTasks,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NCD},,,number of complex decision/merge,NumberOfComplexDecisionMerge,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{TNDO},,,total number of data objects\cite{Garcia2003inte},NumberOfDataObjects,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Data count,Yes,Count data objects
+19518,Rolon2006,2006,,\texttt{NECaE},,,number of end cancel event,NumberOfEndCancelEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NECoE},,,number of end compensation event,NumberOfEndCompensationEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NEEE},,,number of end error event,NumberOfEndErrorEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{TNEE},,,total number of end events,NumberOfEndEvents,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NELE},,,number of end link event,NumberOfEndLinkEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NEMsE},,,number of end message event,NumberOfEndMessageEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NEMuE},,,number of end multiple event,NumberOfEndMultipleEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NENE},,,number of end none event,NumberOfEndNoneEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NETE},,,number of end terminate event,NumberOfEndTerminateEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{TNE},,,total number of events,NumberOfEvents,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Event count,Yes,Count events
+19518,Rolon2006,2006,,\texttt{NEDDB},,,number of exclusive decision/merge data-based,NumberOfExclusiveDecisionMergeDataBased,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NEDEB},,,number of exclusive decision/merge event-based,NumberOfExclusiveDecisionMergeEventBased,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{TNG},,,total number of gateways,NumberOfGateways,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NID},,,number of incusive decision/merge,NumberOfIncusiveDecisionMerge,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NDOIn},,,number of input data objects,NumberOfInputDataObjects,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NICaE},,,number of intermediate cancel event,NumberOfIntermediateCancelEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NICoE},,,number of intermediate compensation event,NumberOfIntermediateCompensationEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NIEE},,,number of intermediate error event,NumberOfIntermediateErrorEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NTIE},,,total number of intermediate events,NumberOfIntermediateEvents,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NILE},,,number of intermediate link event,NumberOfIntermediateLinkEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NIMsE},,,number of intermediate message event,NumberOfIntermediateMessageEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NIMuE},,,number of intermediate multiple event,NumberOfIntermediateMultipleEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NINE},,,number of intermediate none event,NumberOfIntermediateNoneEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NIRE},,,number of intermediate rule event,NumberOfIntermediateRuleEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NITE},,,number of intermediate timer event,NumberOfIntermediateTimerEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{NL},,,number of lanes\cite{Garcia2003inte},NumberOfLanes,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NTL},,,number of looping tasks,NumberOfLoopingTasks,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NMF},,,number of message flows,NumberOfMessageFlows,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NTMI},,,number of multiple instances tasks,NumberOfMultipleInstancesTasks,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NDOOut},,,number of output data objects,NumberOfOutputDataObjects,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NPF},,,number of parallel fork/join,NumberOfParallelForkJoin,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NP},,,number of pools,NumberOfPools,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSFG},,,number of sequence flows from gateways,NumberOfSequenceFlowFromGateways,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{NSF},,,number of sequence flows\cite{Garcia2004},NumberOfSequenceFlows,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSFA},,,number of sequence flows between activities,NumberOfSequenceFlowsBetweenActivities,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSFE},,,number of sequence flows from events,NumberOfSequenceFlowsFromEvents,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NTSE},,,total number of start events,NumberOfStartEvents,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSLE},,,number of start link event,NumberOfStartLinkEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSMsE},,,number of start message event,NumberOfStartMessageEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSMuE},,,number of start multiple event,NumberOfStartMultipleEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSNE},,,number of start none event,NumberOfStartNoneEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSRE},,,number of start rule event,NumberOfStartRuleEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NSTE},,,number of start timer event,NumberOfStartTimerEvent,BPMN,N,19518,Rolon2006,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,,\texttt{NT},,,number of simple tasks,NumberOfTasks,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Task count,Yes,Count tasks
+19518,Rolon2006,2006,Dup,\texttt{PDOPIn},,,rate of input data object over the total of data objects\cite{Garcia2004},RateOfInputDataObjectOverTotalDObjects,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{PDOTOut},,,rate of output data object over the total of tasks\cite{Garcia2003inte},RateOfOutputDataObjectOverTheTotalOfTasks,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{PDOPOut},,,rate of output data object over the total of data objects\cite{Garcia2004},RateOfOutputDataObjectOverTotalDObjects,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{PLT},,,rate of pools and lanes over the total of tasks\cite{Garcia2003inte},RateOfPoolsAndLanesOverTheTotalOfTasks,BPMN,N,19518,Rolon2006,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+19518,Rolon2006,2006,Dup,\texttt{TNT},,,total number of tasks\cite{Garcia2003inte},TNumberOfTasks,BPMN,N,19518,Rolon2006,,,,,none,,Counter,Task count,Yes,Count tasks
+198,Cardoso2007,2007,Dx,\texttt{CFC}_{\texttt{Act}}^{\texttt{BPEL}}(a),,,activity flow complexity for BPEL process,ActivityFlowComplexityForBPEL ,BPEL,N,198,Cardoso2007,,,,,Was-never-validated,,,,,
+198,Cardoso2007,2007,,\texttt{CFC}_{\texttt{Process}}^{\texttt{BPEL}},,,control-flow complexity for BPEL process,ControlflowComplexityForBPELProcess,BPEL,N,198,Cardoso2007,,,,,Was-never-validated,,Calculated,,No,graph based so require arcs
+1473,Cardoso2007busi,2007,,\texttt{LBC}_T,,second set of ,log-based complexity,LogBasedComplexity,BPMN,N,1473,Cardoso2007busi,,,,,Was-never-validated,,Algorithm,,No,graph based so require arcs
+1487,Vanderfeesten2007a,2007,,\texttt{CP},,,coupling,Coupling,Graph,N,1487,Vanderfeesten2007a,,,,,Was-never-validated,,Calculated,,No,graph based so require arcs
+1587,Mendling2007,2007,,\overline{\texttt{d}_C},,,average degree of connectors,AverageDegreeOfConnectors,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Average,,No,graph based so require arcs
+1587,Mendling2007,2007,Dup,\texttt{CNC},,,coefficient of network connectivity\cite{Latva2001},CoefficientOfNetworkConnectivity,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Ratio,,No,graph based so require arcs
+1587,Mendling2007,2007,,\texttt{CH},,,connector heterogeneity,ConnectorHeterogeneity,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Calculated,,No,graph based so require arcs
+1587,Mendling2007,2007,,\texttt{MM},,,connector mismatch,ConnectorMismatch,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Calculated,,No,graph based so require arcs
+1587,Mendling2007,2007,,\texttt{CYC},,,cyclicity,Cyclicity,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Ratio,,No,graph based so require arcs
+1587,Mendling2007,2007,,\Delta,,,density of the process graph,DensityOfTheProcessGraph,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Calculated,,No,graph based so require arcs
+1587,Mendling2007,2007,,\texttt{diam},,,diameter,Diameter,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,graph based so require arcs
+1587,Mendling2007,2007,,\Lambda,,,maximum depth of all nodes,MaximumDepthOfAllNodes,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Algorithm,,No,graph based so require arcs
+1587,Mendling2007,2007,,\widehat{\texttt{d}_C},,,maximun degree of a connector,MaximunDegreeOfAConnector,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Calculated,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,,\texttt{S}_{C_{and}},,,number of AND connectors,NumberOfANDConnectors,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{j_{and}},,,number of AND joins\cite{Mendling2006a},NumberOfANDJoinsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{S_{and}},,,number of AND splits\cite{Mendling2006a},NumberOfANDSplitsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_A,,,number of arcs \cite{Mendling2006a},NumberOfArcsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,graph based so require arcs
+1587,Mendling2007,2007,Dup,\texttt{S}_C,,,number of connectors\cite{Garcia2004},NumberOfConnectors,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{E_E},,,number of end events\cite{Rolon2006},NumberOfEndEventsMendlingX,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_E,,,number of events\cite{Rolon2006},NumberOfEventsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,Event count,Yes,Count events
+1587,Mendling2007,2007,Dup,\texttt{S}_F,,,number of functions\cite{Mendling2006a},NumberOfFunctionsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_N,,,number of nodes\cite{Garcia2003inte},NumberOfNodes,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,Task count,Yes,Count tasks
+1587,Mendling2007,2007,,\texttt{S}_{C_{or}},,,number of OR connectors,NumberOfORConnectors,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{j_{or}},,,number of OR joins\cite{Mendling2006a},NumberOfORJoinsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{S_{or}},,,number of OR splits\cite{Mendling2006a},NumberOfORSplitsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{E_S},,,number of start events\cite{Rolon2006},NumberOfStartEventsMendlingX,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,,\texttt{S}_{C_{xor}},,,number of XOR connectors,NumberOfXORConnectors,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{j_{xor}},,,number of XOR joins\cite{Mendling2006a},NumberOfXORJoinsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,Dup,\texttt{S}_{S_{xor}},,,number of XOR splits\cite{Mendling2006a},NumberOfXORSplitsMendling,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Counter,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,,\prod,,,separability ratio,SeparabilityRatio,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Calculated,,No,graph based so require arcs
+1587,Mendling2007,2007,,\Xi,,,sequentiality ratio,SequentialityRatio,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Ratio,,No,Concept does not exist in {\glCMMN}
+1587,Mendling2007,2007,,\Phi,,,structuredness ratio,StructurednessRatio,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Ratio,,No,graph based so require arcs
+1587,Mendling2007,2007,,\texttt{TS},,,token split,TokenSplit,EPC,S,1587,Mendling2007,,,,,"ANOVA, Correlation, Logistic Regression",,Ratio,,No,Concept does not exist in {\glCMMN}
+109,Cardoso2008,2008,Dup,\texttt{CFC}_{abs},,,absolute control-flow complexity\cite{Cardoso2005cont},AbsoluteControlFlowComplexity,Graph,N,109,Cardoso2008,,,,,Was-never-validated,,Calculated,,No,"Uses splits, joins"
+109,Cardoso2008,2008,,\texttt{CFC}_{rel},,,relative control-flow complexity,RelativeControlFlowComplexity,Graph,,109,Cardoso2008,,,,,Was-never-validated,,Calculated,,No,"Uses splits, joins"
+191,Cheng2008cmpl,2008,,\texttt{Complexity},,second set of ,variety-based complexity,VarietyBasedComplexity,BPMN,N,,,,,,,Was-never-validated,,Calculated,,No,uses possible paths
+1475,Vanderfeesten2008a,2008,,\texttt{CC},,second set of ,cross-connectivity,CrossConnectivity,EPC,TH,1475,Vanderfeesten2008a,,,,,correlation/regression,,Calculated,,No,graph based so require arcs
+1544,Cheng2008comp,2008,,\texttt{H}_{SC},,,structural complexity,StructuralComplexity,Graph,U,1544,Cheng2008comp,,,,,Was-never-validated,,Calculated,,No,uses splits and merges
+31475,Vanderfeesten2008eval,2008,Dup,\texttt{ch},,,process cohesion\cite{Reijers2004},ProcessCohesionVanderfeesten,Graph,N,31475,Vanderfeesten2008eval,,,,,Was-never-validated,,Calculated,,No,Uses graph arcs
+31475,Vanderfeesten2008eval,2008,Dup,\rho,,,process coupling/cohesion ratio\cite{Reijers2004},ProcessCouplingCohesionRatioVanderfeesten,Graph,N,31475,Vanderfeesten2008eval,,,,,Was-never-validated,,Ratio,,No,Uses graph arcs
+31475,Vanderfeesten2008eval,2008,Dup,\texttt{cp},,,process coupling\cite{Reijers2004},ProcessCouplingVanderfeesten,Graph,N,31475,Vanderfeesten2008eval,,,,,Was-never-validated,,Calculated,,No,Uses graph arcs
+107,Lassen2009,2009,,\delta_S,,,aggregated depth fraction,AggregatedDepthFraction,Workflow-Nets,ISx,107,Lassen2009,,,,,Correlation,,Calculated,,No,require a graph
+107,Lassen2009,2009,,\texttt{ECaM},,,extended Cardoso,ExtendedCardoso,Workflow-Nets,ISx,107,Lassen2009,,,,,Correlation ,,Calculated,,No,Uses splits and joins
+107,Lassen2009,2009,,\texttt{ECyM},,,extended cyclomatic,ExtendedCyclomatic,Workflow-Nets,ISx,107,Lassen2009,,,,,Correlation ,,Calculated,,No,require arcs
+107,Lassen2009,2009,,\texttt{SM},,,structuredness,Structuredness,Workflow-Nets,ISx,107,Lassen2009,,,,,Correlation,,Algorithm,,No,reduces a graph
+178,Khoshkbar2009amet,2009,,\texttt{P}_{CIM},,,process context independency metric,ProcessContextIndependency,BPEL,H,178,Khoshkbar2009amet,,,,,none,,Calculated,,No,assume control flow
+178,Khoshkbar2009amet,2009,,\texttt{P}_{CM},,,process coupling metric,ProcessCouplingKhoshkbar,BPEL,H,178,Khoshkbar2009amet,,,,,Was-never-validated,,Calculated,,No,assume control flow
+1568,Borgert2009acom,2009,,\texttt{I}_{f^V},,,Dehmer's graph entropy,DehmersGraphEntropy,Graph,Sx,1568,Borgert2009acom,,,,,Correlation,,Calculated,,No,requires a graph
+1568,Borgert2009acom,2009,Dup,\texttt{C},,,McCabe's cyclomatic number\cite{Lassen2009},McCabeCyclomaticNumberBorgert,Graph,Sx,1568,Borgert2009acom,,,,,Correlation,,Calculated,,No,requires arcs
+1568,Borgert2009acom,2009,,\texttt{R},,,Randi\'{c}'s connectivity index,RandicConnectivityIndex,Graph,Sx,1568,Borgert2009acom,,,,,Correlation,,Calculated,,No,requires a graph
+1568,Borgert2009acom,2009,,\texttt{W},,,Wiener's index,WienerIndex,Graph,Sx,1568,Borgert2009acom,,,,,Correlation,,Calculated,,No,requires a graph
+31486,Held2009stru,2009,,\texttt{AIR},\NoSymbolMetric,,assign/invoke ratio,AssignInvokeRatio,BPEL,N,31486,Held2009stru,,,,,Was-never-validated,,Ratio,,No,Concept does not exist in {\glCMMN}
+31486,Held2009stru,2009,Dup,\texttt{CFC},,,Cardoso's control flow complexity\cite{Cardoso2005cont},CardosoControlFlowComplexity,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Calculated,,No,Uses splits and joins
+31486,Held2009stru,2009,,\texttt{CAR},\NoSymbolMetric,,copy/assign ratio,CopyAssignRatio,BPEL,N,31486,Held2009stru,,,,,Was-never-validated,,Ratio,,No,Concept does not exist in {\glCMMN}
+31486,Held2009stru,2009,,\texttt{DFI},,,data flow intensity,DataFlowIntensity,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Calculated,,No,requires decision points
+31486,Held2009stru,2009,Dup,\texttt{DC},\NoSymbolMetric,,number of decisions\cite{Rolon2006},Decisions,BPEL,N,31486,Held2009stru,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+31486,Held2009stru,2009,,\texttt{DOP},,,degree of parallelism,DegreeOfParallelism,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Calculated,,No,Concept does not exist in {\glCMMN}
+31486,Held2009stru,2009,Dup,\texttt{MCC},,,McCabe's cyclomatic number\cite{Latva2001},McCabeCyclomaticNumberHeld,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Calculated,,No,require arcs
+31486,Held2009stru,2009,Dup,\texttt{NOAC},,,number of activities and control \cite{Cardoso2006b},NumberOfActivitiesAndControlHeld,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Counter,,No,requures well strctured graph
+31486,Held2009stru,2009,,\texttt{NOACC},,,"number of activities, control structures, and copy",NumberOfActivitiesControlStructuresAndCopy,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Counter,,No,require control flow
+31486,Held2009stru,2009,Dup,\texttt{NOA},,,number of activities\cite{Garcia2003inte},NumberOfActivitiesHeld,BPEL,T,31486,Held2009stru,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+31486,Held2009stru,2009,,\texttt{SA},\NoSymbolMetric,,structured activities,StructuredActivities,BPEL,N,31486,Held2009stru,,,,,Was-never-validated,,Counter,,No,requires control-flow
+167,Fu2010,2010,,\texttt{C},,,sequence control-flow complexity,SequenceControlflowComplexity,BPEL,T,167,Fu2010,,,,,Was-never-validated,,Calculated,,No,requires a graph 
+168,Abreu2010defi,2010,Dup,\texttt{CFC},,,CFC \cite{Cardoso2005cont},CardosoControlFlowComplexityAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Calculated,,No,"Uses splits, joins"
+168,Abreu2010defi,2010,Dup,\texttt{CNC},,,CNC \cite{Latva2001},CoefficientOfNetworkComplexityAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,,,No,graph based so require arcs
+168,Abreu2010defi,2010,,\texttt{HKM},,,Henry and Kafura metric ,HenryAndKafura,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Calculated,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{ND},\NoSymbolMetric,,nesting depth \cite{Gruhn2006comp},NestingDepth,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,graph based so require arcs
+168,Abreu2010defi,2010,Dup,\texttt{NCG},\NoSymbolMetric,,number complex gateways\cite{Rolon2006},NumberComplexGateways,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NGDE},\NoSymbolMetric,,number gateway data based exclusive,NumberGatewayDataBasedExclusive,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NGDI},\NoSymbolMetric,,number gateway data based inclusive,NumberGatewayDataBasedInclusive,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NGEE},\NoSymbolMetric,,number gateway event based exclusive,NumberGatewayEventBasedExclusive,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NA},\NoSymbolMetric,,number of activities\cite{Garcia2003inte},NumberOfActivitiesAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+168,Abreu2010defi,2010,,\texttt{NAf},\NoSymbolMetric,,number of artifacts,NumberOfArtifacts,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NAS},\NoSymbolMetric,,number of associations,NumberOfAssociations,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NC},\NoSymbolMetric,,number of connectors\cite{Garcia2004},NumberOfConnectorsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NDO},\NoSymbolMetric,,number of data objects\cite{Garcia2003inte},NumberOfDataObjectsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,Data count,Yes,Count data objects
+168,Abreu2010defi,2010,,\texttt{NDOp},\NoSymbolMetric,,number of different objects in all possible paths,NumberOfDifferentObjectsInAllPaths,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NEE},\NoSymbolMetric,,number of end events\cite{Rolon2006},NumberOfEndEventsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{TNE},,,number of events \cite{Rolon2006},NumberOfEventsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,Event count,Yes,Count events
+168,Abreu2010defi,2010,,\texttt{NFO},\NoSymbolMetric,,number of flow objects,NumberOfFlowObjects,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NFOSP},\NoSymbolMetric,,number of flow objects in smallest path,NumberOfFlowObjectsInSmallestPath,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NGa},\NoSymbolMetric,,number of gates (fan-in + fan-out),NumberOfGatesFinFout,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{TNG},,,number of gateways \cite{Rolon2006},NumberOfGatewaysAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NG},\NoSymbolMetric,,number of groups,NumberOfGroups,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NIG},\NoSymbolMetric,,number of input gates (fan-in),NumberOfInputGatesFanIn,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NIE},\NoSymbolMetric,,number of intermediate events\cite{Rolon2006},NumberOfIntermediateEventsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NL},\NoSymbolMetric,,number of lanes \cite{Garcia2003inte},NumberOfLanesAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NMF},\NoSymbolMetric,,number of message flows\cite{Rolon2006},NumberOfMessageFlowsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NOBP},\NoSymbolMetric,,number of objects in biggest path,NumberOfObjectsInBiggestPath,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NOG},\NoSymbolMetric,,number of output gates(fan-out),NumberOfOutputGatesFanOut,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NP},\NoSymbolMetric,,number of pools \cite{Rolon2006},NumberOfPoolsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NPP},\NoSymbolMetric,,number of possible paths,NumberOfPossiblePaths,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NSF},\NoSymbolMetric,,number of sequence flows\cite{Garcia2004},NumberOfSequenceFlowsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NSE},\NoSymbolMetric,,number of start events\cite{Rolon2006},NumberOfStartEventsAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{NSP},\NoSymbolMetric,,number of sub-processes,NumberOfSubProcesses,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,Case count,Yes,Count case tasks
+168,Abreu2010defi,2010,Dup,\texttt{NSL},\NoSymbolMetric,,number of swimlanes\cite{Rolon2006},NumberOfSwimlanes,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{TNT},,,number of tasks \cite{Garcia2003inte},NumberOfTasksAbreu,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+168,Abreu2010defi,2010,,\texttt{NTA},\NoSymbolMetric,,number of text annotations,NumberOfTextAnnotations,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,Dup,\texttt{NPG},\NoSymbolMetric,,number parallel gateways\cite{Rolon2006},NumberParallelGateways,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+168,Abreu2010defi,2010,,\texttt{PC},\NoSymbolMetric,,process complexity ,ProcessComplexity ,BPMN,,168,Abreu2010defi,,,,,Was-never-validated,,Calculated,,No,uses a graph
+170,Mao2010comp,2010,,\texttt{ADP},,,average degree of place,AverageDegreeOfPlace,Petri-Net,N,170,Mao2010comp,,,,,none,,Average,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,,\texttt{ADT},,,average degree of transition,AverageDegreeOfTransition,Petri-Net,N,170,Mao2010comp,,,,,none,,Average,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,,\texttt{AEPC},,,average execution path complexity,AverageExecutionPathComplexity,Petri-Net,N,170,Mao2010comp,,,,,none,,Average,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,Dup,\texttt{CC},,,McCabe's cyclomatic number\cite{Latva2001},McCabeCyclomaticNumberMao,Petri-Net,N,170,Mao2010comp,,,,,none,,Calculated,,No,require arcs
+170,Mao2010comp,2010,,\texttt{N}_P,,,number of places,NumberOfPlaces,Petri-Net,N,170,Mao2010comp,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,,\texttt{N}_S,,,number of services,NumberOfServices,Petri-Net,N,170,Mao2010comp,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,,\texttt{N}_T,,,number of transitions,NumberOfTransitions,Petri-Net,N,170,Mao2010comp,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+170,Mao2010comp,2010,,\texttt{TNS},,,transfer number per service,TransferNumberPeService,Petri-Net,N,170,Mao2010comp,,,,,none,,Calculated,,No,require arcs
+174,Muketha2010,2010,,\texttt{ACCSA},,,average cognitive complexity of structured activity,AverageCognitiveComplexityOfStructActivity,BPEL,T,174,Muketha2010,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+174,Muketha2010,2010,,\texttt{ALSA},,,average length of structured activity,AverageLengthOfStructuredActivity,BPEL,T,174,Muketha2010,,,,,none,,Ratio,,No,Concept does not exist in {\glCMMN}
+174,Muketha2010,2010,,\texttt{CCBP},,,cognitive complexity,CognitiveComplexity,BPEL,T,174,Muketha2010,,,,,none,,Weighted,Weights,Yes,Assign weight to elements and sum them
+174,Muketha2010,2010,,\texttt{IF4BP},,,information flow complexity,InformationFlowComplexity,BPEL,T,174,Muketha2010,,,,,none,,Calculated,,No,Concept does not exist in {\glCMMN}
+174,Muketha2010,2010,Dup,\texttt{NOBA},,,number of basic activities\cite{Rolon2006},NumberOfBasicActivities,BPEL,T,174,Muketha2010,,,,,none,,Counter,Task count,Yes,Count tasks
+174,Muketha2010,2010,Dup,\texttt{NOSA},,,number of structured activities\cite{Rolon2006},NumberOfStructuredActivities,BPEL,T,174,Muketha2010,,,,,none,,Counter,,No,Concept does not exist in {\glCMMN}
+174,Muketha2010,2010,,\texttt{SCBP},,,structural complexity,StructuralComplexityMuketha,BPEL,T,174,Muketha2010,,,,,none,,Calculated,,No,Concept does not exist in {\glCMMN}
+26492,Mao2010cont,2010,,\text{AEPC}_{CI},,second set of ,average execution path complexity based on cognitive informatics,AverageExecutionPathComplexityCI,Petri-Net,Sx,26492,Mao2010cont,,,,,none,,Weighted,,No,requires a graph
+45443,Kreimeyer2010astr,2010,,\texttt{APL},\NoSymbolMetric,,average path length,AveragePathLength,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Average,,No,requires a graph
+45443,Kreimeyer2010astr,2010,,\texttt{HH},\NoSymbolMetric,,height of hierarchy,HeightOfHierarchy,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,Hierarchy depth,Yes,Depth of stage hierarchy
+45443,Kreimeyer2010astr,2010,,\texttt{NCl},\NoSymbolMetric,,number of classes,NumberOfClasses,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,Unique tasks,Yes,Count unique tasks
+45443,Kreimeyer2010astr,2010,,\texttt{NDos},\NoSymbolMetric,,number of domains,NumberOfDomains,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,requires a graph
+45443,Kreimeyer2010astr,2010,Dup,\texttt{NE},\NoSymbolMetric,,number of edges\cite{Mendling2006a},NumberOfEdges,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,requires a graph
+45443,Kreimeyer2010astr,2010,,\texttt{NEN},\NoSymbolMetric,,number of edges per node,NumberOfEdgesPerNode,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,requires a graph
+45443,Kreimeyer2010astr,2010,,\texttt{NF},\NoSymbolMetric,,number of feedbacks,NumberOfFeedbacks,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,requires a graph
+45443,Kreimeyer2010astr,2010,,\texttt{NIS},\NoSymbolMetric,,number of independent sets,NumberOfIndependentSets,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,requires a graph
+45443,Kreimeyer2010astr,2010,Dup,\texttt{NN},\NoSymbolMetric,,number of nodes\cite{Garcia2003inte},NumberOfNodesKreimeyer,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+45443,Kreimeyer2010astr,2010,,\texttt{NUN},\NoSymbolMetric,,number of unconnected nodes,NumberOfUnconnectedNodes,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,,No,require arcs
+45443,Kreimeyer2010astr,2010,,\texttt{RD},\NoSymbolMetric,,relational density,RelationalDensity,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Calculated,,No,require arcs
+45443,Kreimeyer2010astr,2010,,\texttt{WH},\NoSymbolMetric,,width of hierarchy,WidthOfHierarchy,Graph,O,45443,Kreimeyer2010astr,,,,,Was-never-validated,,Counter,Hierarchy width,Yes,Width of stage hierarchy
+101,LaRosa2011mana,2011,Dup,\texttt{AGD},\NoSymbolMetric,,average gateway degree\cite{Mendling2007},AverageGatewayDegree,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Average,,No,Concept does not exist in {\glCMMN}
+101,LaRosa2011mana,2011,,\texttt{Depth},\NoSymbolMetric,,depth,Depth,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Counter,Hierarchy depth,Yes,Depth of stage hierarchy
+101,LaRosa2011mana,2011,Dup,\texttt{diam},\NoSymbolMetric,,diameter \cite{Mendling2007},DiameterLaRosa,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Counter,,No,graph based so require arcs
+101,LaRosa2011mana,2011,,\texttt{DMC},\NoSymbolMetric,,different modeling concepts,DifferentModelingConcepts,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Counter,Modeling concepts,Yes,Count modeling concepts used in the model
+101,LaRosa2011mana,2011,Dup,\texttt{MS},\NoSymbolMetric,,model size\cite{Mendling2006a},ModelSize,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Counter,,No,Concept does not exist in {\glCMMN}
+101,LaRosa2011mana,2011,,\texttt{MO},\NoSymbolMetric,,modules overhead,ModulesOverhead,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Ratio,,No,Concept does not exist in {\glCMMN}
+101,LaRosa2011mana,2011,,\texttt{S},\NoSymbolMetric,,structuredness ,StructurednessLaRosa,BPMN,N,101,LaRosa2011mana,,,,,Was-never-validated,,Calculated,,No,Concept does not exist in {\glCMMN}
+31485,Antonini2011soft,2011,,\texttt{Size}_{A},,,activity size of process,ActivitySizeOfProcess,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+31485,Antonini2011soft,2011,Dup,\texttt{Complexity}_{CF},,,control flow complexity\cite{Cardoso2006b},ControlFlowComplexityAntonini,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Calculated,,No,require a graph
+31485,Antonini2011soft,2011,,\texttt{Complexity}_{DF},,,data flow complexity,DataFlowComplexity,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Calculated,,No,require routing tasks
+31485,Antonini2011soft,2011,,\texttt{Size}_{R},,,resource size ,ResourceSize ,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Counter,,No,require a graph
+31485,Antonini2011soft,2011,Dup,\texttt{Size}_{CF},,,size of control flow graph\cite{Cardoso2006b},SizeOfControlFlowGraph,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Counter,,No,require a graph
+31485,Antonini2011soft,2011,,\texttt{Size}_{DF},,,size of data flow graph,SizeOfDataFlowGraph,BPMN,T,31485,Antonini2011soft,,,,,Was-never-validated,,Counter,,No,require a graph
+151,Kluza2012,2012,,\texttt{DSM},,,Durfee square metric,DurfeeSquareMetric,BPMN,I ,151,Kluza2012,,,,,none,,Calculated,Durfee square,Yes,Adapt Durfee square metric
+151,Kluza2012,2012,,\texttt{PSM},,,perfect square metric,PerfectSquareMetric,BPMN,I,151,Kluza2012,,,,,none,,Calculated,Perfect square,Yes,Adapt perfect square metric
+1546,Huan2014stud,2014,Dup,\texttt{IF},,,information flow complexity\cite{Muketha2010},InformationFlowComplexityHuan,YAWL,T,1546,Huan2014stud,,,,,none,,Calculated,,No,Concept does not exist in {\glCMMN}
+1585,Coskun2014phd,2014,,\texttt{CADAC},,,cognitive activity depth arc control flow,CognitiveActivityDepthArcControlFlow,BPMN,TS-,1585,Coskun2014phd,,,,,none,,Weighted,Weights,Yes,Assign weight to elements and sum them
+681,Lubke2015usin,2015,,\texttt{ATC}_{\texttt{activity type}},\NoSymbolMetric,,activity type count,ActivityTypeCount,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Counter,,No,it is not a single process metric
+681,Lubke2015usin,2015,,\texttt{BAD},\NoSymbolMetric,,basic activity distribution,BasicActivityDistribution,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Percentage,,No,implementation specific
+681,Lubke2015usin,2015,,\texttt{EAC},\NoSymbolMetric,,extension activity count,ExtensionActivityCount,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Percentage,,No,implementation specific
+681,Lubke2015usin,2015,,\texttt{EDB},\NoSymbolMetric,,extension activity distribution,ExtensionActivitydistribution,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Counter,,No,implementation specific
+681,Lubke2015usin,2015,Dup,\texttt{TBAC},\NoSymbolMetric,,total basic activity count\cite{Rolon2006},NumberOfBasicActivitiesLubke,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Counter,Task count,Yes,Count tasks
+681,Lubke2015usin,2015,Dup,\texttt{TSAC},\NoSymbolMetric,,total structured activity count\cite{Held2009stru},StructuredActivitiesLubke,BPEL,N,681,Lubke2015usin,,,,,Was-never-validated,,Counter,Stage count,Yes,Count stages
+1563,Kluza2015meas,2015,,\texttt{Complexity},,,complexity of process integrated with rules,ComplexityOfProcessWithRules,BPMN,N,1563,Kluza2015meas,,,,,none,,Calculated,,No,uses control flow

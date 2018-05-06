@@ -1,0 +1,83 @@
+id,Author,Year,done,StArt.type,Type,New.metrics,New.no.PLC.metric,Reused.metrics,Undefined.metrics,Notation,Primary.source,Complexity.metrics,Classification,Sum.Subjects,Sum.Models,Theoretical.val,Empirical.Validation,Implemented,Non.validation.experiment,Survey.of.metrics,Comments,Concepts,Other concepts,Reused from
+32490,Daneva1996benc,1996,x,Accepted,Primary,3,3,0,0,EPC,Y,Y,N,,11,,CS/E,,,N,,structural (control flow) complexity,,
+1529,Sobrinho1999comp,1999,x,Accepted,Primary,3,4,0,0,VPML,Y,Y,N,,,,N,,,N,,maintainability,,
+38469,Tjaden1999busi,1999,x,Accepted,Primary,4,0,0,0,Graph,Y,Y,N,,,,N,,,N,,structural process flow,,
+1470,Latva2001,2001,x,Accepted,Primary,6,0,0,0,Graph,Y,Y,N,,6,,CS,Y,,Y,,structural complexity,complexity,
+55413,Garcia2003inte,2003,x,Accepted,Primary,9,21,0,0,SPEM,Y,Y,N,,,,N,Y,,N,,,,
+117,Garcia2004,2004,x,Accepted,Primary,5,0,7,0,SPEM,Y,Y,N,161,18,,Hw,,,N,,understandability time and modifiability time,"maintainability, structural complexity",Garcia2003inte
+116,Garcia2004defi,2004,x,dup,Secundary,0,0,12,0,SPEM,N,Y,N,29,18,,Hw,,,N,,,,Garcia2004
+47444,Garcia2004fmes,2004,x,dup,Secundary,0,0,12,0,SPEM,N,Y,N,64,10,,Hw,,,N,Adds experiment 5,,,Garcia2004
+56410,Garcia2004prop,2004,x,dup,Secundary,0,0,12,0,SPEM,N,Y,N,45,18,,Hw,,,N,,,,Garcia2003inte
+1586,Reijers2004,2004,x,Accepted,Primary,3,3,3,0,Graph,Y,Y,Y,,,,I,,,N,consider their metrics has some influence on complexity,Cohesion and coupling,,Reijers2003a
+47437,Canfora2005,2005,x,dup,Duplicated,,,,,,,,,,,,,,,N,real dup,,,Garcia2004fmes
+1491,Cardoso2005,2005,x,Rejected,Rejected,0,1,0,2,BPEL,Y,Y,N,,,,N,,,N,IC is not a process level complexity metric,,,
+31477,Cardoso2005a,2005,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,Cardoso2005cont
+1480,Cardoso2005cont,2005,x,Accepted,Primary,2,0,0,2,Graph,Y,Y,Y,,,Y,N,,,N,"also defined in ,Cardoso2006,Cardoso2006b,Gruhn2006comp,Mendling2007",,,
+208,Cardoso2005eval,2005,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,Cardoso2005cont
+200,Cardoso2006a,2006,x,dup,Secundary,0,0,1,0,Graph,N,Y,N,19,22,,Hw,,,,same paper as Cardoso2008 (id 109),,,"Cardoso2008,Cardoso2005cont"
+111,Cardoso2006b,2006,x,Accepted,Primary,8,1,5,0,Graph,Y,Y,N,,,,N,,,Y,mention but no reference the experiment described in Cardoso2006a (id 200) and Cardoso2008 (109),,"correctness, maintainability, and understandability","Cardoso2005cont,Cardoso2005"
+47443,Garcia2006fmes,2006,x,dup,Duplicated,,,,,,,,,,,,,,,N,real dup,,,Garcia2004fmes
+205,Gruhn2006adop,2006,x,Accepted,Primary,1,0,0,0,YAWL,Y,Y,N,,,,N,,,N,,,"comprehension, understandability, analyzability and maintainability",
+201,Gruhn2006comp,2006,x,Accepted,Primary,5,0,2,0,EPC,Y,Y,N,,,,N,,,Y,,,understandability and maintainability,Cardoso2005cont
+1588,Mendling2006,2006,x,Accepted,Primary,3,0,0,0,EPC,Y,Y,N,,604,,S,,,N,34 of the 604 EPCs have errors,errors,,
+1584,Mendling2006a,2006,x,Accepted,Primary,15,0,0,0,YAWL,Y,Y,N,,604,,S,,,N,34 has errors,errors, operationalize complexity with density and size,
+19518,Rolon2006,2006,x,Accepted,Primary,57,0,0,0,BPMN,Y,Y,N,,,,N,,,N,,,,Garcia2004
+31473,Rolon2006appl,2006,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,Rolon2005
+199,Rolon2006towa,2006,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,"Rolon2005,Rolon2006,Rolon2006appl"
+198,Cardoso2007,2007,x,Accepted,Primary,1,1,1,0,BPEL,Y,Y,Y,,,,N,,,N,,,,
+1473,Cardoso2007busi,2007,x,Accepted,Primary,1,0,0,0,BPMN,Y,Y,Y,,,,N,,,N,,,"poor understandability, errors, defects, and exceptions",
+194,Gruhn2007,2007,x,dup,Duplicated,,,,,,,,,,,,,,,Y,Real dup,,,Gruhn2006comp
+1587,Mendling2007,2007,x,Accepted,Primary,29,0,,0,EPC,Y,Y,Y,,2003,,S,,,Y,,errors,,
+195,Mendling2007a,2007,x,dup,Secundary,0,0,6,0,EPC,N,Y,N,,604,,S,,,N,,errors,,Mendling2007
+57408,Mendling2007c,2007,x,dup,Duplicated,,,,,,,,,,,,,,,,,,,Mendling2007
+31489,Mendling2007d,2007,x,dup,Secundary,0,0,20,0,EPC,N,Y,N,73,12,,H,,,N,,,,Mendling2007
+31491,Rolon2007anex,2007,x,dup,Secundary,0,0,60,0,BPMN,N,Y,Y,27,10,,Hw,,,N,first experiment,,,Rolon2005
+1487,Vanderfeesten2007a,2007,x,Accepted,Primary,1,0,0,0,EPC,Y,Y,Y,,,,N,,,N,Claim that it is useful for understandability,coupling,,
+680, Kreimeyer2008stru,2008,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,"Cardoso2006b,Cardoso2005cont"
+1577,Boote2008unde,2008,x,Rejected,Survey,,,,,,,,,,,,,,,,"(CHECK)Provides a survey of metrics, but the report is trying to find factors (no metrics) that influence model complexity (for example modeling experience, domain knowledge, etc.)",,,
+109,Cardoso2008,2008,x,Accepted,Primary,1,0,1,0,Graph,Y,Y,Y,19,22,Y,N,,,N,Experiment is dup with Cardoso2006a,,,
+1544,Cheng2008comp,2008,x,Accepted,Primary,1,2,0,0,Graph,Y,Y,Y,,,,N,,Y,Y,this is a problem because experiment requires vars that are outside the scope of this review),,,
+1506,Melcher2008visu,2008,x,Rejected,Uses,,,,,,,,,,,,,,,,(CHECK)concerned with visualization of process metrics and its correlation but does not define or validates the metrics but it does not define or validate any metrics,,,
+5573,Mendling2008,2008,x,dup,Duplicated,,,,,,,,,,,,,,,,Real dup (book version of thesis),,,Mendling2007
+47442,Mendling2008a,2008,x,dup,Secundary,0,0,8,0,EPC,N,Y,N,42,12,,HS,,,N,,,,Mendling2007
+188,Parizi2008,2008,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,Cardoso2007
+31492,Rolon2008,2008,x,dup,Secundary,0,0,61,0,BPMN,N,Y,Y,109,10,,Hw,,,N,,,,"Rolon2005,Rolon2006,Rolon2006appl"
+1475,Vanderfeesten2008a,2008,x,Accepted,Primary,1,0,0,0,EPC,Y,Y,N,73,12,,H/S,,,Y,two validations (second 604 EPC models and correlated for errors), error probability and understandability,easier understood and contain less errors,
+31475,Vanderfeesten2008eval,2008,x,Accepted,Primary,3,0,3,0,Graph,Y,Y,Y,,3,,I,Y,,N,,,,
+1568,Borgert2009acom,2009,x,Accepted,Primary,3,0,1,0,Graph,Y,Y,N,,6,,M,,,N,compared the metrics among themself,,,
+1542,Borgert2009onqu,2009,x,dup,Duplicated,,,,,,,,,,,,,,,N,,,,Borgert2009acom
+179,Han2009eval,2009,x,dup,Secundary,0,0,1,0,YAWL,N,Y,N,,,Y,N,,,N,Provides theoretical validation for Gruhn2006adop,,,Gruhn2006adop
+31486,Held2009stru,2009,x,Accepted,Primary,7,0,5,0,BPEL,Y,Y,Y,,,Y,N,,,Y,,,,
+178,Khoshkbar2009amet,2009,x,Accepted,Primary,2,0,0,0,BPEL,Y,Y,N,3,20,,E,,,N,,,,
+107,Lassen2009,2009,x,Accepted,Primary,4,0,0,0,WF-nets,Y,Y,N,,262,,M,Y,,N,,,structuredness,
+57407,Reynoso2009form,2009,x,dup,Duplicated,,,,,,,,,,,,,,,,Formalizes the metrics using OCL,,,Rolon2006appl
+1485,Rolon2009anal,2009,x,dup,Secundary,0,0,1,0,BPMN,N,Y,N,224,15,,Hw,,,N,,,,"Cardoso2005cont,Rolon2008"
+46440,Rolon2009pred,2009,x,dup,Secundary,0,0,29,0,BPMN,N,Y,N,115,15,,Hw,,,N,Presents the second family of experiments (first family was in Rolon2008),,,"Rolon2005,Rolon2006"
+168,Abreu2010defi,2010,x,Accepted,Primary,26,0,9,0,BPMN,Y,Y,,,4,,N,,Y,Y,,,,
+172,Debnath2010opti,2010,x,dup,Duplicated,,,,,,,,,,,,,,,N,real dup (but uses other notation),,,Rolon2005
+167,Fu2010,2010,x,Accepted,Primary,1,0,0,0,BPEL,Y,Y,N,,,Y,N,,,Y,"Seems similar to CFC (only add loop, but that is bad for static metric)",,,
+45443,Kreimeyer2010astr,2010,x,Accepted,Primary,12,19,5,0,Graph,,Y,Y,,2,,N,,Y,Y,,,,Gruhn2006comp
+166,Kreimeyer2010proc,2010,x,dup,Uses,,,,,,,,,,,,,,,N,,,,Kreimeyer2010astr
+170,Mao2010comp,2010,x,Accepted,Primary,8,0,,0,Petri-Nets,Y,Y,N,,1,,N,,,N,Provides an example,,,
+26492,Mao2010cont,2010,x,Accepted,Primary,1,0,8,0,Petri-Nets,Y,Y,N,,2,,I,,,N,,,,
+174,Muketha2010,2010,x,Accepted,Primary,7,0,0,0,BPEL,Y,Y,N,,3,Y,I,,,Y,,,,
+175,Muketha2010asur,2010,x,dup,Survey,,,,,,,,,,,,,,,Y,SURVEY OF METRICS,,,
+31483,Sanchez2010pred,2010,x,dup,Secundary,0,0,13,0,BPMN,N,Y,Y,127,15,,H,,,N,,,,Mendling2007
+31485,Antonini2011soft,2011,x,Accepted,Primary,4,0,2,0,BPMN,Y,Y,Y,,1,Y,N,,,Y,Theorical validates using Morasca,,,
+101,LaRosa2011mana,2011,x,Accepted,Primary,2,,5,,Graph,Y,Y,N,22,,,N,,Y,N,"evaluated usability of the patterns, but not validated the metrics.",,comprehension,
+1571,Maesalu2011comp,2011,x,dup,Secundary,0,0,8,0,EPC,,,Y,16,8,,H,,Y,Y,"started with 735 models but end with  533 of them, than then is reduced to 59. Eight metrics were used",,,"Rolon2005, Cardoso2005cont, Vanderfeesten2008a, Mendling2006, Mendling2007"
+20,Sanchez2011towa,2011,x,dup,Uses,,,,,,,,,,,,,,,Y,,,,Cardoso2006a
+151,Kluza2012,2012,x,Accepted,Primary,2,0,,0,BPMN,Y,Y,N,,,,N,Y,,Y,,,understandability,
+99,Sanchez2012qual,2012,x,dup,Uses,,,,,,,,,,,,,,,Y,,,,"Cardoso2006a, Mendling2008, Rolon2005"
+95,Glowalla2013proc,2013,x,Rejected,Survey,,,,,,,,,,,,,,,,"(CHECK)interesting paper on how data quality affects complexity metrics, but it does not define or validate metrics",,,
+150,Setiawan2013inte,2013,x,dup,Secundary,0,2,1,0,BPMN,N,Y,N,,1,,N,,,N,,,,Cardoso2005cont
+148,Solichah2013expl,2013,x,dup,Secundary,0,0,3,0,BPMN,N,Y,N,,4,,CS,,,Y,,,,"Antonini2011soft,Cardoso2006b"
+1585,Coskun2014phd,2014,x,Accepted,Primary,1,0,10,0,BPMN,Y,Y,N,,12,Y,CM,,,Y,,,,
+1546,Huan2014stud,2014,x,Accepted,Primary,1,0,0,0,YAWL,Y,Y,N,,2,Y,CM,,,Y,Compared the metric against 3 other metrics,,,
+135,Kluza2014squa,2014,x,dup,Secundary,0,0,2,0,BPMN,N,Y,N,,10,,CM,Y,,Y,almost identical to Kluza2012 (but with a validation section),,,Kluza2012
+131,Anugrah2015deco,2015,x,dup,Uses,,,,,,,,,,,,,,,N,apply complexity metrics for analysis of process mining,,,"Mao2010comp,Cardoso2008"
+1563,Kluza2015meas,2015,x,Accepted,Primary,1,,20,0,BPMN,Y,Y,Y,,3,,CM,,,Y,,,,
+681,Lubke2015usin,2015,x,Accepted,Primary,6,,0,0,BPEL,Y,Y,N,,,,N,Y,Y,N,,,,
+134,Martinho2015comp,2015,x,dup,Uses,,,,,,,,,,,,,,,N,,,,Cardoso2008
+817,Sanchez2015acas,2015,x,dup,Uses,,,,,,,,,,,,,,,N,,,,"Sanchez2011towa, Sanchez2012qual"
+191,Cheng2008cmpl,2008,,Accepted,Primary,1,0,0,0,BPMN,Y,Y,N,,,,N,,,Y,,,,
