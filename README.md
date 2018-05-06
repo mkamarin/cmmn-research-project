@@ -1,6 +1,11 @@
 
 # Research data, sources and documents for thesis on Exploring Complexity Metrics for Artifact-Centric Business Process Models
-This repository contains the supplemental material for the [thesis "Exploring Complexity Metrics for Artifact-Centric Business Process Models" by Marin, Mike A., Ph.D., University of South Africa (South Africa), 2017.](https://pqdtopen.proquest.com/pubnum/10759956.html)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1241595.svg)](https://doi.org/10.5281/zenodo.1241595)
+
+This repository contains the supplemental material for the [thesis "Exploring Complexity Metrics for Artifact-Centric Business Process Models" by Marin, Mike A., Ph.D., University of South Africa (South Africa), 2017, 434; 10759956](https://pqdtopen.proquest.com/pubnum/10759956.html).
+
+Please cite as: Marin, Mike A. (2018). Research data, sources and documents for thesis on Exploring Complexity Metrics for Artifact-Centric Business Process Models (Version v1.0) [Data set]. Zenodo. [http://doi.org/10.5281/zenodo.1241595](http://doi.org/10.5281/zenodo.1241595).
+
 
 ## Data Sets (data folder)
 The following files correspond to the data collected during the empirical validation described
